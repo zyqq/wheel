@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="zh-Hans">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>轮子</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --button-height: 32px;
+      --button-bg: white;
+      --button-active-bg: #eee;
+      --font-size: 14px;
+      --border-radius: 4px;
+      --color: #999;
+      --border-color: #999;
+      --border-color-hover: #666;
+    }
+
+    body {
+      font-size: var(--font-size);
+    }
+
+    #app {
+      margin: 20px;
+    }
+  </style>
+  <style>
+    .g-button {
+      height: var(--button-height);
+      padding: 0 1em;
+      font: inherit;
+      border-radius: var(--border-radius);
+      border: 1px solid var(--border-color);
+      background: var(--button-bg);
+    }
+
+    .g-button:hover {
+      border-color: var(--border-color-hover);
+    }
+
+    .g-button:active {
+      background: var(--button-active-bg);
+    }
+
+    .g-button:focus {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <g-button></g-button>
+  </div>
+
+  <script src="./node_modules/vue/dist/vue.min.js"></script>
+  <script src="./button.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        message: 'hi'
+      }
+    })
+  </script>
+</body>
+
+</html>
