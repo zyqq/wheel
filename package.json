@@ -1,11 +1,8 @@
 {
-  "name": "wheel",
+  "name": "echo-wheel",
   "version": "0.0.1",
   "description": "一个用 Vue 写的 UI 框架",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zyqq/wheel.git"
