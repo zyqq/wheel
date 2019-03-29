@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/zyqq/wheel/issues"
   },
-  "homepage": "https://github.com/zyqq/wheel#readme"
+  "homepage": "https://github.com/zyqq/wheel#readme",
+  "dependencies": {
+    "vue": "^2.6.10"
+  }
 }
