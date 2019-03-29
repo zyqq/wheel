@@ -18,6 +18,8 @@ new Vue({
 
 // 单元测试
 import chai from 'chai'
+import spies from 'chai-spies'
+chai.use(spies)
 const expect = chai.expect
 {
   // 测试传入icon
@@ -67,6 +69,25 @@ const expect = chai.expect
   let { order } = window.getComputedStyle(useElement)
   expect(order).to.eq("2")
   // 销毁测试实例，防止内存泄露
+  vm.$el.remove()
+  vm.$destroy()
+}
+
+{
+  // 测试 click 事件
+  const Constructor = Vue.extend(Button)
+  const vm = new Constructor({
+    propsData: {
+      icon: 'setting',
+    }
+  })
+  vm.$mount()
+  let spy = chai.spy(() => {})
+  vm.$on('click', spy)
+  // 希望 click 事件被触发
+  let button = vm.$el
+  button.click()
+  expect(spy).to.have.been.called()
   vm.$el.remove()
   vm.$destroy()
 }
