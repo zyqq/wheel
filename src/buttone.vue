@@ -49,6 +49,7 @@ export default {
     align-items: center;
     vertical-align: middle;
     &:hover {
+      cursor: pointer;
       border-color: var(--border-color-hover);
     }
     &:active {
