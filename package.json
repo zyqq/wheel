@@ -1,0 +1,23 @@
+{
+  "name": "wheel",
+  "version": "0.0.1",
+  "description": "一个用 Vue 写的 UI 框架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zyqq/wheel.git"
+  },
+  "keywords": [
+    "Vue",
+    "UI"
+  ],
+  "author": "Echo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zyqq/wheel/issues"
+  },
+  "homepage": "https://github.com/zyqq/wheel#readme"
+}
