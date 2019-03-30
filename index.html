@@ -34,14 +34,16 @@
   <style>
     .box {
       margin: 20px;
+      border: 1px solid black
     }
+    
   </style>
 </head>
 
 <body>
   <div id="app">
     <div class="box">
-      <w-row gutter="20">
+      <!-- <w-row gutter="20">
         <w-col>1</w-col>
         <w-col>2</w-col>
       </w-row>
@@ -55,21 +57,31 @@
         <w-col>2</w-col>
         <w-col>3</w-col>
         <w-col>4</w-col>
-      </w-row>
+      </w-row> -->
       <w-row gutter="20">
-        <w-col span="2">1</w-col>
-        <w-col span="22">11</w-col>
+        <w-col 
+          span="24"
+          :ipad="{ span: 12 }"
+          :narrow-pc="{ span: 8 }"
+          :pc="{ span: 4 }"
+          :wide-pc="{ span: 1 }"
+        >1</w-col>
+        <w-col 
+          span="24"
+          :ipad="{ span: 12 }"
+          :narrow-pc="{ span: 16 }"
+          :pc="{ span: 20}"
+          :wide-pc="{ span: 23 }"
+        >11</w-col>
       </w-row>
-      <w-row>
+      <!-- <w-row>
         <w-col span="4">1</w-col>
         <w-col span="18" offset="2">11</w-col>
-      </w-row>
+      </w-row> -->
 
     </div>
     <div class="box">
       <w-input v-model="message"></w-input>
-      {{message}}
-      <button @click="message += 1">+1</button>
       <w-input value="李四" disabled></w-input>
       <w-input value="李四" readonly></w-input>
     </div>
