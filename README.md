@@ -1,50 +1,90 @@
-# 轮子 -- 一个用 Vue 写的 UI 框架
+<p align="center"><a href="https://github.com/zyqq/wheel" target="_blank" rel="noopener noreferrer"><img width="100" src="img/轮子.png" alt="Echo Wheel logo"></a></p>
 
-作者: Echo
+<p align="center">
+  <a href="https://travis-ci.org/travis-ci/travis-web"><img src="https://travis-ci.org/travis-ci/travis-web.svg?branch=master" alt="Build Status"></a>
+  <a href="https://npmcharts.com/compare/echo-wheel?minimal=true"><img src="https://img.shields.io/npm/dm/echo-wheel.svg" alt="Downloads"></a>
+  <a href="https://www.npmjs.com/package/echo-wheel"><img src="https://img.shields.io/npm/v/echo-wheel.svg" alt="Version"></a>
+  <a href="https://www.npmjs.com/package/echo-wheel"><img src="https://img.shields.io/npm/l/echo-wheel.svg" alt="License"></a>
+</p>
 
-## 安装
-`npm install echo-wheel` 或者 `yarn add echo-wheel`
-使用此框架前，请再 css 中开启 border-box
+<h2 align="center">Echo Wheel -- 一个用 Vue 写的 UI 框架</h2>
 
-```
-* {
-  box-sizing: border-box;
-}
-```
+## 介绍
 
-## 使用
+这是我在学习 Vue 中写的一个 UI 框架，希望对你有用。
 
-在使用组件的页面中引入所需组件及样式
+## 开始使用
 
-```
-import { Button } from 'echo-wheel'
-import 'echo-wheel/dist/index.css'
-```
+1. 添加 css 样式
 
-在Vue实例中声明组件
-```
-export defult {
-  components: {
-    'w-button': Button
-  }
-}
-```
+    使用此框架前，请再 css 中开启 border-box
 
-添加默认主题样式
-```
-:root {
-  --button-height: 32px;
-  --button-bg: white;
-  --button-active-bg: #eee;
-  --font-size: 14px;
-  --border-radius: 4px;
-  --color: #999;
-  --border-color: #999;
-  --border-color-hover: #666;
-}
-```
+    ```css
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    ```
 
-之后便可在template中引用组件
-```
-<w-buttton>欢迎使用轮子组件<w-button>
-```
+    IE8 及以上浏览器均支持此样式
+
+    你还需要设置默认样式等变量（后续会改为 SCSS 变量）
+
+    ```css
+    :root {
+      --button-height: 32px;
+      --button-bg: white;
+      --button-active-bg: #eee;
+      --font-size: 14px;
+      --border-radius: 4px;
+      --color: #999;
+      --border-color: #999;
+      --border-color-hover: #666;
+    }
+    ```
+
+    IE15 及以上浏览器均支持此样式
+
+2. 安装 echo-wheel
+
+    `npm install --save echo-wheel` 或者 `yarn add echo-wheel`
+
+3. 引入 echo-wheel
+
+    ```js
+    import { Button } from 'echo-wheel'
+    import 'echo-wheel/dist/index.css'
+
+    export defult {
+      components: {
+        'w-button': Button
+      }
+    }
+    ```
+
+4. 使用组件
+
+    ```html
+      <w-buttton>欢迎使用轮子组件<w-button>
+    ```
+
+## 文档
+
+（之后会托管在 gitpage , 在 VuePress 中写好框架文档）
+
+## 提问
+
+欢迎提 issue
+
+## 变更记录
+
+2019.3.30 0.0.1 添加按钮组件
+
+## 联系方式
+
+WeChat: QQ252545095
+QQ: 252545095
+email: 252545095@qq.com
+
+## 贡献代码
+
+Echo
