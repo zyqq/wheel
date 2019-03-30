@@ -34,14 +34,37 @@
   <style>
     .box {
       margin: 20px;
-      border: 1px solid black
     }
-    
+    .demo {
+      background: grey;
+      height: 100px;
+      border: 1px solid red;
+    }
   </style>
 </head>
 
 <body>
   <div id="app">
+    <w-row>
+      <w-col span="24" :narrow-pc="{span: 8}">
+        <div class="demo"></div>
+      </w-col>
+      <w-col span="24" :narrow-pc="{span: 8}">
+        <div class="demo"></div>
+      </w-col>
+      <w-col span="24" :narrow-pc="{span: 8}">
+        <div class="demo"></div>
+      </w-col>
+      <w-col span="24" :narrow-pc="{span: 8}">
+        <div class="demo"></div>
+      </w-col>
+      <w-col span="24" :narrow-pc="{span: 8}">
+        <div class="demo"></div>
+      </w-col>
+      <w-col span="24" :narrow-pc="{span: 8}">
+        <div class="demo"></div>
+      </w-col>
+    </w-row>
     <div class="box">
       <!-- <w-row gutter="20">
         <w-col>1</w-col>
@@ -58,11 +81,9 @@
         <w-col>3</w-col>
         <w-col>4</w-col>
       </w-row> -->
-      <w-row gutter="20">
+      <!-- <w-row gutter="20">
         <w-col 
           span="24"
-          :ipad="{ span: 12 }"
-          :narrow-pc="{ span: 8 }"
           :pc="{ span: 4 }"
           :wide-pc="{ span: 1 }"
         >1</w-col>
@@ -73,7 +94,7 @@
           :pc="{ span: 20}"
           :wide-pc="{ span: 23 }"
         >11</w-col>
-      </w-row>
+      </w-row> -->
       <!-- <w-row>
         <w-col span="4">1</w-col>
         <w-col span="18" offset="2">11</w-col>
