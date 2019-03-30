@@ -1,15 +1,28 @@
-<p align="center"><a href="https://github.com/zyqq/wheel" target="_blank" rel="noopener noreferrer"><img width="100" src="img/轮子.png" alt="Echo Wheel logo"></a></p>
 
 <p align="center">
-  <a href="https://travis-ci.org/zyqq/wheel"><img src="https://travis-ci.org/zyqq/wheel.svg?branch=master" alt="Build Status"></a>
-  <a href="https://npmcharts.com/compare/echo-wheel?minimal=true"><img src="https://img.shields.io/npm/dm/echo-wheel.svg" alt="Downloads"></a>
-  <a href="https://www.npmjs.com/package/echo-wheel"><img src="https://img.shields.io/npm/v/echo-wheel.svg" alt="Version"></a>
-  <a href="https://www.npmjs.com/package/echo-wheel"><img src="https://img.shields.io/npm/l/echo-wheel.svg" alt="License"></a>
+  <a href="https://github.com/zyqq/wheel" target="_blank" rel="noopener noreferrer">
+    <img width="100" src="img/轮子.png" alt="Echo Wheel logo">
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://travis-ci.org/zyqq/wheel" target="_blank">
+    <img src="https://travis-ci.org/zyqq/wheel.svg?branch=master" alt="Build Status">
+  </a>
+  <a href="https://npmcharts.com/compare/echo-wheel?minimal=true" target="_blank">
+    <img src="https://img.shields.io/npm/dm/echo-wheel.svg" alt="Downloads">
+  </a>
+  <a href="https://www.npmjs.com/package/echo-wheel" target="_blank">
+    <img src="https://img.shields.io/npm/v/echo-wheel.svg" alt="Version">
+  </a>
+  <a href="https://www.npmjs.com/package/echo-wheel" target="_blank">
+    <img src="https://img.shields.io/npm/l/echo-wheel.svg" alt="License">
+  </a>
 </p>
 
 <h2 align="center">Echo Wheel -- 一个用 Vue 写的 UI 框架</h2>
 
-## 介绍
+# 介绍
 
 这是我在学习 Vue 中写的一个 UI 框架，希望对你有用。
 
@@ -85,8 +98,9 @@
 
 ## 贡献代码
 
-<a href="https://github.com/zyqq/wheel/graphs/contributors"><img src="img/avatar.jpeg" width="40" /></a>
-
+<a href="https://github.com/zyqq/wheel/graphs/contributors">
+  <img src="img/avatar.jpeg" width="40" />
+</a>
 
 ## 证书
 
