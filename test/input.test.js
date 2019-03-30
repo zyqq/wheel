@@ -81,7 +81,7 @@ describe('Input', () => {
         })
 
         inputElement.dispatchEvent(event);
-        expect(callback).to.have.been.calledWith('hi ')
+        expect(callback).to.have.been.calledWith('hi')
       })
     })
   })
