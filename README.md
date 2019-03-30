@@ -77,14 +77,19 @@
 
 ## 变更记录
 
-2019.3.30 0.0.1 添加按钮组件
+详情变更记录在 [发布笔记](https://github.com/zyqq/wheel/releases).
 
 ## 联系方式
 
-WeChat: QQ252545095
-QQ: 252545095
-email: 252545095@qq.com
+- [Echo](https://github.com/zyqq)
 
 ## 贡献代码
 
-Echo
+<a href="https://github.com/zyqq/wheel/graphs/contributors"><img src="img/avatar.jpeg" width="40" /></a>
+
+
+## 证书
+
+[MIT](http://opensource.org/licenses/MIT)
+
+Copyright (c) 2019-present, Yiqiu (Echo) Zheng
