@@ -1,5 +1,5 @@
 <template>
-  <button class="w-button echo" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
+  <button class="w-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
     <w-icon class="icon" v-if="icon && !loading" :name="icon" ></w-icon>
     <w-icon class="loading icon" v-if="loading" name="loading"></w-icon>
     <div class="content">
@@ -11,6 +11,7 @@
 <script>
 import Icon from './icon'
 export default {
+  name: 'WheelButton',
   components: {
     'w-icon': Icon
   },
@@ -31,7 +32,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @keyframes spin {
     0% {
       transform: rotate(0deg);

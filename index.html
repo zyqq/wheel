@@ -31,34 +31,48 @@
       margin: 20px;
     }
   </style>
+  <style>
+    .box {
+      margin: 20px;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
-    <w-button :loading="loading1" @click="loading1 = !loading1">
-      按钮
-    </w-button>
-    <w-button icon="setting" icon-position="left" :loading="loading2" @click="loading2 = !loading2">
-      按钮
-    </w-button>
-    <w-button icon="setting" icon-position="right" :loading="loading3" @click="loading3 = !loading3">
-      按钮
-    </w-button>
-    <w-button-group>
-      <w-button icon="left">
-        上一页
+    <div class="box">
+      <w-input value="张三"></w-input>
+      <w-input value="李四" disabled></w-input>
+      <w-input value="李四" readonly></w-input>
+    </div>
+    <div class="box">
+      <w-input value="网" error="请填写姓名"></w-input>
+    </div>
+    <div class="box">
+      <w-button :loading="loading1" @click="loading1 = !loading1">
+        按钮
       </w-button>
-      <w-button>
-        更多
+      <w-button icon="setting" icon-position="left" :loading="loading2" @click="loading2 = !loading2">
+        按钮
       </w-button>
-      <w-button icon="right">
-        下一页
+      <w-button icon="setting" icon-position="right" :loading="loading3" @click="loading3 = !loading3">
+        按钮
       </w-button>
-    </w-button-group>
+      <w-button-group>
+        <w-button icon="left">
+          上一页
+        </w-button>
+        <w-button>
+          更多
+        </w-button>
+        <w-button icon="right">
+          下一页
+        </w-button>
+      </w-button-group>
+    </div>
   </div>
 
   <script src="./src/app.js"></script>
-  <script src="//at.alicdn.com/t/font_1116305_z6gb4md1w5f.js"></script>
 </body>
 
 </html>

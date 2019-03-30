@@ -4,11 +4,14 @@
   </svg>
 </template>
 <script>
+import './svg.js'
+
 export default {
+  name: "WheelIcon",
   props: ['name']
 };
 </script>
-<style lang='scss'>
+<style lang='scss' scoped>
 .w-icon {
   height: 1em;
   width: 1em;
