@@ -46,7 +46,12 @@
       <w-input value="李四" readonly></w-input>
     </div>
     <div class="box">
-      <w-input value="网" error="请填写姓名"></w-input>
+      <w-input value="网" error="请填写姓名"
+        @change="inputChange"
+        @input="inputChange"
+        @focus="inputChange"
+        @blur="inputChange"
+      ></w-input>
     </div>
     <div class="box">
       <w-button :loading="loading1" @click="loading1 = !loading1">
