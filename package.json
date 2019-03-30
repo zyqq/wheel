@@ -1,6 +1,6 @@
 {
   "name": "echo-wheel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "一个用 Vue 写的 UI 框架",
   "main": "dist/index.js",
   "repository": {
@@ -9,7 +9,8 @@
   },
   "keywords": [
     "Vue",
-    "UI"
+    "UI",
+    "Wheel"
   ],
   "author": "Echo",
   "license": "MIT",
