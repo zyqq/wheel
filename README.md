@@ -1,7 +1,7 @@
 <p align="center"><a href="https://github.com/zyqq/wheel" target="_blank" rel="noopener noreferrer"><img width="100" src="img/轮子.png" alt="Echo Wheel logo"></a></p>
 
 <p align="center">
-  <a href="https://travis-ci.org/travis-ci/travis-web"><img src="https://travis-ci.org/travis-ci/travis-web.svg?branch=master" alt="Build Status"></a>
+  <a href="https://travis-ci.org/zyqq/wheel"><img src="https://travis-ci.org/zyqq/wheel.svg?branch=master" alt="Build Status"></a>
   <a href="https://npmcharts.com/compare/echo-wheel?minimal=true"><img src="https://img.shields.io/npm/dm/echo-wheel.svg" alt="Downloads"></a>
   <a href="https://www.npmjs.com/package/echo-wheel"><img src="https://img.shields.io/npm/v/echo-wheel.svg" alt="Version"></a>
   <a href="https://www.npmjs.com/package/echo-wheel"><img src="https://img.shields.io/npm/l/echo-wheel.svg" alt="License"></a>
