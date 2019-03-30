@@ -41,6 +41,32 @@
 <body>
   <div id="app">
     <div class="box">
+      <w-row gutter="20">
+        <w-col>1</w-col>
+        <w-col>2</w-col>
+      </w-row>
+      <w-row gutter="20">
+        <w-col>1</w-col>
+        <w-col>2</w-col>
+        <w-col>3</w-col>
+      </w-row>
+      <w-row gutter="20">
+        <w-col>1</w-col>
+        <w-col>2</w-col>
+        <w-col>3</w-col>
+        <w-col>4</w-col>
+      </w-row>
+      <w-row gutter="20">
+        <w-col span="2">1</w-col>
+        <w-col span="22">11</w-col>
+      </w-row>
+      <w-row>
+        <w-col span="4">1</w-col>
+        <w-col span="18" offset="2">11</w-col>
+      </w-row>
+
+    </div>
+    <div class="box">
       <w-input v-model="message"></w-input>
       {{message}}
       <button @click="message += 1">+1</button>
