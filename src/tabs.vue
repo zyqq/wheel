@@ -4,6 +4,8 @@
   </div>
 </template>
 <script>
+import Vue from 'vue'
+
 export default {
   name: 'WheelTabs',
   props: {
@@ -19,8 +21,18 @@ export default {
       }
     }
   },
+  data () {
+    return {
+      eventBus: new Vue()
+    }
+  },
+  provide() {
+    return {
+      eventBus: this.eventBus
+    }
+  },
   created () {
-    // this.$emit('update:selected', 'xxx')
+    this.eventBus.$emit('update:selected', this.selected)
   }
 }
 </script>
