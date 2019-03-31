@@ -5,7 +5,8 @@
 </template>
 <script>
 export default {
-  name: 'WheelTabsBody'
+  name: 'WheelTabsBody',
+  inject: ['eventBus']
 }
 </script>
 <style lang="scss" scoped>
