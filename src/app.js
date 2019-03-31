@@ -38,14 +38,7 @@ new Vue({
       console.log(e.target.value)
     },
     showToast() {
-      this.$toast('我是一个toast', {
-        closeButton: {
-          text: '知道了',
-          callback: (toast) => {
-            // 调用 toast 组件的方法
-            toast.log()
-          }
-        }
+      this.$toast('很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字', {
       })
     }
   }
