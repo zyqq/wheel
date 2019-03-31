@@ -28,24 +28,37 @@
     }
 
     #app {
-      margin: 20px;
+      /* margin: 20px; */
     }
   </style>
   <style>
     .box {
       margin: 20px;
     }
+
     .demo {
       background: grey;
-      height: 100px;
+      min-height: 100px;
       border: 1px solid red;
+    }
+
+    .sider {
+      width: 200px;
     }
   </style>
 </head>
 
 <body>
   <div id="app">
-    <w-row>
+    <w-layout style="height: 100vh">
+      <w-sider class="demo">sider</w-sider>
+      <w-layout>
+        <w-header class="demo">header</w-header>
+        <w-content class="demo">content</w-content>
+        <w-footer class="demo">footer</w-footer>
+      </w-layout>
+    </w-layout>
+    <!-- <w-row>
       <w-col span="24" :narrow-pc="{span: 8}">
         <div class="demo"></div>
       </w-col>
@@ -66,7 +79,7 @@
       </w-col>
     </w-row>
     <div class="box">
-      <!-- <w-row gutter="20">
+      <w-row gutter="20">
         <w-col>1</w-col>
         <w-col>2</w-col>
       </w-row>
@@ -80,25 +93,16 @@
         <w-col>2</w-col>
         <w-col>3</w-col>
         <w-col>4</w-col>
-      </w-row> -->
-      <!-- <w-row gutter="20">
-        <w-col 
-          span="24"
-          :pc="{ span: 4 }"
-          :wide-pc="{ span: 1 }"
-        >1</w-col>
-        <w-col 
-          span="24"
-          :ipad="{ span: 12 }"
-          :narrow-pc="{ span: 16 }"
-          :pc="{ span: 20}"
-          :wide-pc="{ span: 23 }"
-        >11</w-col>
-      </w-row> -->
-      <!-- <w-row>
+      </w-row>
+      <w-row gutter="20">
+        <w-col span="24" :pc="{ span: 4 }" :wide-pc="{ span: 1 }">1</w-col>
+        <w-col span="24" :ipad="{ span: 12 }" :narrow-pc="{ span: 16 }" :pc="{ span: 20}" :wide-pc="{ span: 23 }">11
+        </w-col>
+      </w-row>
+      <w-row>
         <w-col span="4">1</w-col>
         <w-col span="18" offset="2">11</w-col>
-      </w-row> -->
+      </w-row>
 
     </div>
     <div class="box">
@@ -107,12 +111,8 @@
       <w-input value="李四" readonly></w-input>
     </div>
     <div class="box">
-      <w-input value="网" error="请填写姓名"
-        @change="inputChange"
-        @input="inputChange"
-        @focus="inputChange"
-        @blur="inputChange"
-      ></w-input>
+      <w-input value="网" error="请填写姓名" @change="inputChange" @input="inputChange" @focus="inputChange"
+        @blur="inputChange"></w-input>
     </div>
     <div class="box">
       <w-button :loading="loading1" @click="loading1 = !loading1">
@@ -135,7 +135,7 @@
           下一页
         </w-button>
       </w-button-group>
-    </div>
+    </div> -->
   </div>
 
   <script src="./src/app.js"></script>
