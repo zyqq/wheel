@@ -37,8 +37,26 @@ new Vue({
     inputChange(e) {
       console.log(e.target.value)
     },
-    showToast() {
-      this.$toast('很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字很多文字', {
+    showToast1() {
+      this.showToast('top')
+    },
+    showToast2() {
+      this.showToast('middle')
+    },
+    showToast3() {
+      this.showToast('bottom')
+    },
+    showToast(position) {
+      this.$toast(`您的余额为 ${parseInt(Math.random() * 100)}. 需要充值`, {
+        enableHtml: false,
+        autoClose: false,
+        position,
+        closeButton: {
+          text: '充值',
+          callback: (toast) => {
+            toast.log()
+          }
+        }
       })
     }
   }
