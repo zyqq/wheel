@@ -15,12 +15,11 @@ export default {
   name: "WheelToast",
   props: {
     autoClose: {
-      type: Boolean,
-      default: true
-    },
-    autoCloseDelay: {
-      type: Number,
-      default: 3
+      type: [Boolean, Number],
+      default: 5,
+      validator(value) {
+        return typeof value === 'boolean' || typeof value === 'number'
+      }
     },
     closeButton: {
       type: Object,
@@ -30,7 +29,7 @@ export default {
           text: "关闭",
           // 点击关闭按钮的回调函数
           callback: undefined
-        };
+        }
       }
     },
     enableHtml: {
@@ -58,16 +57,14 @@ export default {
     updateStyle() {
       // 实现多行文字父元素需要用到 min-height，此时子元素 height 为 100% 获取不到父元素 height，因此异步获取父元素高
       this.$nextTick(() => {
-        this.$refs.line.style.height = `${
-          this.$refs.toast.getBoundingClientRect().height
-        }px`;
+        this.$refs.line.style.height = `${this.$refs.toast.getBoundingClientRect().height}px`;
       });
     },
     execAutoClose() {
       if (this.autoClose) {
         setTimeout(() => {
           this.close();
-        }, this.autoCloseDelay * 1000);
+        }, this.autoClose * 1000);
       }
     },
     close() {

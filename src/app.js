@@ -47,7 +47,7 @@ new Vue({
       this.showToast('bottom')
     },
     showToast(position) {
-      this.$toast(`您的余额为 ${parseInt(Math.random() * 100)}. 需要充值`, {
+      this.$toast(`您的余额为您的余额为您的余额为您的余额为您的余额为您的余额为您的余额为您的余额为您的余额为您的余额为 ${parseInt(Math.random() * 100)}. 需要充值`, {
         enableHtml: false,
         autoClose: false,
         position,
