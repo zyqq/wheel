@@ -37,8 +37,16 @@ new Vue({
     inputChange(e) {
       console.log(e.target.value)
     },
-    showToast(){
-      this.$toast('我是一个toast')
+    showToast() {
+      this.$toast('我是一个toast', {
+        closeButton: {
+          text: '知道了',
+          callback: (toast) => {
+            // 调用 toast 组件的方法
+            toast.log()
+          }
+        }
+      })
     }
   }
 })
@@ -100,7 +108,7 @@ new Vue({
 //     vm.$el.remove()
 //     vm.$destroy()
 //   }
-  
+
 //   {
 //     // 测试 click 事件
 //     const Constructor = Vue.extend(Button)
