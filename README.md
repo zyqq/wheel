@@ -98,6 +98,11 @@
 
 ## 贡献代码
 
+每个分支名称代表完成组件名，目前提交顺序是
+ `button-and-input` -> `row-and-col` -> `grid-and-layout`
+可按照此顺序查看分支以获得具体组件完成时的提交记录，按此学习编写组件的源代码。欢迎有想法有需求的小伙伴提`issue`或者一起来造轮子 😊
+
+感谢以下贡献者：
 <a href="https://github.com/zyqq/wheel/graphs/contributors">
   <img src="img/avatar.jpeg" width="40" />
 </a>
