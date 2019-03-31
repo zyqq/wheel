@@ -11,6 +11,12 @@ import Footer from './footer.vue'
 import Content from './content.vue'
 import Sider from './sider.vue'
 import plugin from './plugin'
+import Tabs from './tabs.vue'
+import TabsHead from './tabs-head.vue'
+import TabsItem from './tabs-item.vue'
+import TabsBody from './tabs-body.vue'
+import TabsPane from './tabs-pane.vue'
+
 
 Vue.component('w-button', Button)
 Vue.component('w-icon', Icon)
@@ -24,6 +30,11 @@ Vue.component('w-content', Content)
 Vue.component('w-footer', Footer)
 Vue.component('w-sider', Sider)
 Vue.use(plugin)
+Vue.component('w-tabs', Tabs)
+Vue.component('w-tabs-head', TabsHead)
+Vue.component('w-tabs-item', TabsItem)
+Vue.component('w-tabs-body', TabsBody)
+Vue.component('w-tabs-pane', TabsPane)
 
 new Vue({
   el: '#app',
@@ -31,7 +42,8 @@ new Vue({
     loading1: false,
     loading2: true,
     loading3: false,
-    message: ''
+    message: '',
+    selectedTab: 'sports'
   },
   methods: {
     inputChange(e) {
@@ -47,7 +59,7 @@ new Vue({
       this.showToast('bottom')
     },
     showToast(position) {
-      this.$toast(`您的余额为您的余额为您的余额为您的余额为您的余额为您的余额为您的余额为您的余额为您的余额为您的余额为 ${parseInt(Math.random() * 100)}. 需要充值`, {
+      this.$toast(`您的余额为 ${parseInt(Math.random() * 100)}. 需要充值`, {
         enableHtml: false,
         autoClose: false,
         position,

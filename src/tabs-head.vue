@@ -1,15 +1,14 @@
-
 <template>
-  <div class="header">
+  <div class="tabs-head">
     <slot></slot>
+    <slot name="actions"></slot>
   </div>
 </template>
 <script>
 export default {
-  name: 'WheelHeader'
+  name: 'WheelTabsHead'
 }
 </script>
 <style lang="scss" scoped>
 </style>
-
 

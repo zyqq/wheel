@@ -50,9 +50,36 @@
 
 <body>
   <div id="app">
-    <w-button @click="showToast1">top</w-button>
+    <w-tabs :selected.sync="selectedTab" >
+      <w-tabs-head>
+        <template slot="actions">
+          <button>设置</button>
+        </template>
+        <w-tabs-item name="woman">
+          <w-icon name="setting"></w-icon>美女
+        </w-tabs-item>
+        <w-tabs-item name="finance" disabled>
+          财经
+        </w-tabs-item>
+        <w-tabs-item name="sports">
+          体育
+        </w-tabs-item>
+      </w-tabs-head>
+      <w-tabs-body>
+        <w-tabs-pane name="woman">
+          美女相关资讯
+        </w-tabs-pane>
+        <w-tabs-pane name="finance">
+          财经相关资讯
+        </w-tabs-pane>
+        <w-tabs-pane name="sports">
+          体育相关资讯
+        </w-tabs-pane>
+      </w-tabs-body>
+    </w-tabs>
+    <!-- <w-button @click="showToast1">top</w-button>
     <w-button @click="showToast2">middle</w-button>
-    <w-button @click="showToast3">bottom</w-button>
+    <w-button @click="showToast3">bottom</w-button> -->
     <!-- <w-layout style="height: 100vh">
       <w-sider class="demo">sider</w-sider>
       <w-layout>
