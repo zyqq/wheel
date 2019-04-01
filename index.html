@@ -53,9 +53,10 @@
   <div id="app">
     <div style="overflow: hidden; padding: 150px 150px 0;">
       <w-popover position="bottom">
-        <template slot="content">
+        <template slot="content" slot-scope="{close}">
           <div>askdjsakdjsakjdslkjdlskjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
           <div>askdjsakdjsakjdslkjdlskjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
+          <w-button @click="close">关闭</w-button>
         </template>
         <w-button>下</w-button>
       </w-popover>
