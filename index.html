@@ -51,7 +51,7 @@
 
 <body>
   <div id="app">
-    <div style="overflow: hidden; padding: 150px;">
+    <div style="overflow: hidden; padding: 150px 150px 0;">
       <w-popover position="bottom">
         <template slot="content">
           <div>askdjsakdjsakjdslkjdlskjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
@@ -77,7 +77,34 @@
         </template>
         <w-button>右</w-button>
       </w-popover>
-    </div>
+    </div>    
+    <div style="overflow: hidden; padding: 0 150px 150px;">
+        <w-popover position="bottom" trigger="hover">
+          <template slot="content">
+            <div>askdjsakdjsakjdslkjdlskjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
+            <div>askdjsakdjsakjdslkjdlskjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
+          </template>
+          <w-button>下</w-button>
+        </w-popover>
+        <w-popover position="top" trigger="hover">
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <w-button>上</w-button>
+        </w-popover>
+        <w-popover position="left" trigger="hover">
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <w-button>左</w-button>
+        </w-popover>
+        <w-popover position="right" trigger="hover">
+          <template slot="content">
+            <div>popover内容</div>
+          </template>
+          <w-button>右</w-button>
+        </w-popover>
+      </div>
     <!-- <w-tabs :selected.sync="selectedTab" >
       <w-tabs-head>
         <template slot="actions">
