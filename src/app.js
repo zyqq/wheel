@@ -1,21 +1,22 @@
 import Vue from 'vue'
-import Button from './button.vue'
-import Icon from './icon.vue'
-import ButtonGroup from './button-group.vue'
-import Input from './input.vue'
-import Row from './row.vue'
-import Col from './col.vue'
-import Layout from './layout.vue'
-import Header from './header.vue'
-import Footer from './footer.vue'
-import Content from './content.vue'
-import Sider from './sider.vue'
+import Button from './button'
+import Icon from './icon'
+import ButtonGroup from './button-group'
+import Input from './input'
+import Row from './row'
+import Col from './col'
+import Layout from './layout'
+import Header from './header'
+import Footer from './footer'
+import Content from './content'
+import Sider from './sider'
 import plugin from './plugin'
-import Tabs from './tabs.vue'
-import TabsHead from './tabs-head.vue'
-import TabsItem from './tabs-item.vue'
-import TabsBody from './tabs-body.vue'
-import TabsPane from './tabs-pane.vue'
+import Tabs from './tabs'
+import TabsHead from './tabs-head'
+import TabsItem from './tabs-item'
+import TabsBody from './tabs-body'
+import TabsPane from './tabs-pane'
+import Popover from './popover'
 
 
 Vue.component('w-button', Button)
@@ -35,6 +36,7 @@ Vue.component('w-tabs-head', TabsHead)
 Vue.component('w-tabs-item', TabsItem)
 Vue.component('w-tabs-body', TabsBody)
 Vue.component('w-tabs-pane', TabsPane)
+Vue.component('w-popover', Popover)
 
 new Vue({
   el: '#app',

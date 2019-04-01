@@ -51,7 +51,17 @@
 
 <body>
   <div id="app">
-    <w-tabs :selected.sync="selectedTab" >
+    <div style="margin: 50px">
+      <w-popover>
+        <template slot="content">
+          <div>
+            popover 内容
+          </div>
+        </template>
+        <w-button>点我</w-button>
+      </w-popover>
+    </div>
+    <!-- <w-tabs :selected.sync="selectedTab" >
       <w-tabs-head>
         <template slot="actions">
           <w-button>设置</w-button>
@@ -77,7 +87,7 @@
           体育相关资讯
         </w-tabs-pane>
       </w-tabs-body>
-    </w-tabs>
+    </w-tabs> -->
     <!-- <w-button @click="showToast1">top</w-button>
     <w-button @click="showToast2">middle</w-button>
     <w-button @click="showToast3">bottom</w-button> -->
