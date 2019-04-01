@@ -4,8 +4,31 @@
   </div>
 </template>
 <script>
+import Vue from 'vue'
 export default {
-  name: 'WheelCollapse'
+  name: 'WheelCollapse',
+  provide() {
+    if(this.single) {
+      return {
+        eventBus: this.eventBus
+      }
+    } else {
+      return {
+        eventBus: null
+      }
+    }
+  },
+  props: {
+    single: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      eventBus: new Vue()
+    }
+  },
 }
 </script>
 <style lang="scss" scoped>
