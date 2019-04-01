@@ -29,7 +29,7 @@
     }
 
     #app {
-      /* margin: 20px; */
+      margin: 20px;
     }
   </style>
   <style>
@@ -51,14 +51,31 @@
 
 <body>
   <div id="app">
-    <div style="margin: 50px">
-      <w-popover>
+    <div style="overflow: hidden; padding: 150px;">
+      <w-popover position="bottom">
         <template slot="content">
-          <div>
-            popover 内容
-          </div>
+          <div>askdjsakdjsakjdslkjdlskjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
+          <div>askdjsakdjsakjdslkjdlskjdlsjkdlskjdlsjkdlskjdlsajkdlajkdlkajdlksajdladjk</div>
         </template>
-        <w-button>点我</w-button>
+        <w-button>下</w-button>
+      </w-popover>
+      <w-popover position="top">
+        <template slot="content">
+          <div>popover内容</div>
+        </template>
+        <w-button>上</w-button>
+      </w-popover>
+      <w-popover position="left">
+        <template slot="content">
+          <div>popover内容</div>
+        </template>
+        <w-button>左</w-button>
+      </w-popover>
+      <w-popover position="right">
+        <template slot="content">
+          <div>popover内容</div>
+        </template>
+        <w-button>右</w-button>
       </w-popover>
     </div>
     <!-- <w-tabs :selected.sync="selectedTab" >
