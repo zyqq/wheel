@@ -1,18 +1,18 @@
 <template>
-  <div class="tabs-item" :class="classes" @click="clickItem">
+  <div class="tabs-item" :class="classes" @click="onClick">
     <slot></slot>
   </div>
 </template>
 <script>
 export default {
-  name: "WheelTabsItem",
+  name: 'WheelTabsItem',
   props: {
     disabled: {
       type: Boolean,
       default: false
     },
     name: {
-      type: String|Number,
+      type: String | Number,
       required: true
     }
   },
@@ -25,7 +25,8 @@ export default {
   computed: {
     classes() {
       return {
-        active: this.active
+        active: this.active,
+        disabled: this.disabled
       }
     }
   },
@@ -35,7 +36,8 @@ export default {
     })
   },
   methods: {
-    clickItem() {
+    onClick() {
+      if (this.disabled) { return }
       this.eventBus.$emit('update:selected', this.name, this)
     }
   }
@@ -43,7 +45,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 $blue: blue;
-.tabs-item{
+$disabled-text-color: grey;
+.tabs-item {
   display: flex;
   align-items: center;
   flex-shrink: 0;
@@ -53,6 +56,10 @@ $blue: blue;
   &.active {
     color: $blue;
     font-weight: bold;
+  }
+  &.disabled {
+    color: $disabled-text-color;
+    cursor: not-allowed;
   }
 }
 </style>
