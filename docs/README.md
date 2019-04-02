@@ -1,6 +1,4 @@
-# EchoWheel UI
-
-[官方文档](https://zyqq.github.io/wheel/)
+# EchoWheel UI <img src="../img/轮子.png" width="40" />
 
 EchoWheel UI 是一个不太一样的 UI 框架。
 

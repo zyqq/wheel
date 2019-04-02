@@ -125,6 +125,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   $animation-duration: 300ms;
   &.position-top {
     top: 0;
+    z-index: 1000;
     .toast {
       border-top-left-radius: 0;
       border-top-right-radius: 0;
@@ -133,6 +134,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   }
   &.position-bottom {
     bottom: 0;
+    z-index: 1000;
     .toast {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
@@ -141,6 +143,7 @@ $toast-bg: rgba(0, 0, 0, 0.75);
   }
   &.position-middle {
     top: 50%;
+    z-index: 1000;
     .toast {
       animation: fade-in $animation-duration;
     }

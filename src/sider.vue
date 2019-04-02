@@ -8,8 +8,10 @@
   </transition>
 </template>
 <script>
+import WButton from './button'
 export default {
   name: "WheelSider",
+  components: {WButton},
   data() {
     return {
       visible: true

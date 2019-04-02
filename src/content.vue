@@ -1,6 +1,6 @@
 
 <template>
-  <div class="content">
+  <div class="wheel-content">
     <slot></slot>
   </div>
 </template>
@@ -10,7 +10,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .content {
+  .wheel-content {
     flex-grow: 1;
   }
 </style>

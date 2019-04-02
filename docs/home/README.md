@@ -1,7 +1,7 @@
 
 <p align="center">
   <a href="https://github.com/zyqq/wheel" target="_blank" rel="noopener noreferrer">
-    <img width="100" src="img/轮子.png" alt="Echo Wheel logo">
+    <img width="100" src="../../img/轮子.png" alt="Echo Wheel logo">
   </a>
 </p>
 
@@ -90,10 +90,6 @@
 
 ## 变更记录
 
-简单轮子：按钮、输入框、网格、布局、Toast、Tabs、Popover、手风琴（代码已完成）
-进阶轮子：级联选择、无缝轮播、响应式导航条、分页、表单验证、Table、图片上传、Sticky、Tree、Suggestion、Datepicker（代码未完成）
-其他：路由、状态管理（代码未完成）
-
 详情变更记录在 [发布笔记](https://github.com/zyqq/wheel/releases).
 
 ## 联系方式
@@ -111,7 +107,7 @@
 感谢以下贡献者😄：
 
 <a href="https://github.com/zyqq/wheel/graphs/contributors">
-  <img src="img/avatar.jpeg" width="40" />
+  <img src="../../img/avatar.jpeg" width="40" />
 </a>
 
 ## 证书
