@@ -1,6 +1,6 @@
 <template>
   <div style="padding-top: 16px;">
-    <h2>设置空隙</h2>
+    <h2>📌 设置空隙</h2>
     <p>
       <strong>预览</strong>
     </p>
@@ -61,7 +61,7 @@
     <p>
       <strong>代码</strong>
     </p>
-    <pre><code>{{content}}</code></pre>
+    <!-- <pre><code>{{content}}</code></pre> -->
   </div>
 </template>
 <style scoped>

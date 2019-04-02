@@ -24,7 +24,7 @@
 
 # 介绍
 
-这是我在学习 Vue 中写的一个 UI 框架，希望对你有用。
+这是我在学习 Vue 中写的一个 UI 框架，希望对你有用。可查看  [官方文档](https://zyqq.github.io/wheel/) 预览 👀
 
 ## 开始使用
 
@@ -80,33 +80,33 @@
       <w-buttton>欢迎使用轮子组件<w-button>
     ```
 
-## 文档
-
-[官方文档](https://zyqq.github.io/wheel/)
-
 ## 提问
 
-欢迎提 issue
+欢迎 [提issue](https://github.com/zyqq/wheel/issues)
 
 ## 变更记录
 
-简单轮子：按钮、输入框、网格、布局、Toast、Tabs、Popover、手风琴（代码已完成）
-进阶轮子：级联选择、无缝轮播、响应式导航条、分页、表单验证、Table、图片上传、Sticky、Tree、Suggestion、Datepicker（代码未完成）
-其他：路由、状态管理（代码未完成）
+- 简单轮子：按钮、输入框、网格、布局、Toast、Tabs、Popover、手风琴（代码已完成）
+- 进阶轮子：级联选择、无缝轮播、响应式导航条、分页、表单验证、Table、图片上传、Sticky、Tree、Suggestion、Datepicker（代码未完成）
+- 其他：路由、状态管理（代码未完成）
 
-详情变更记录在 [发布笔记](https://github.com/zyqq/wheel/releases).
+详情变更记录在 [releases](https://github.com/zyqq/wheel/releases).
 
 ## 联系方式
 
-- [Echo](https://github.com/zyqq)
+可扫描以下二维码添加本人微信公众号留言😄
+
+<a href="https://github.com/zyqq/wheel/graphs/contributors">
+  <img src="/img/Echo_252545095.jpg" width="300" />
+</a>
 
 ## 贡献代码
 
 每个分支名称代表完成组件名，目前提交顺序是
 
-> `button-and-input` -> `row-and-col` -> `grid-and-layout`
+> `button-and-input` -> `row-and-col` -> `grid-and-layout` -> `toast` -> `tabs` -> `popover` -> `collapse`
 
-可按照此顺序查看分支以获得具体组件完成时的提交记录，按此学习编写组件的源代码。欢迎有想法有需求的小伙伴提`issue`或者一起来造轮子 😊
+可按照此顺序查看分支以获得具体组件完成时的提交记录，按此学习编写组件的源代码。欢迎有想法有需求的小伙伴 [提issue](https://github.com/zyqq/wheel/issues) 或者一起来造轮子 😊
 
 感谢以下贡献者😄：
 

@@ -1,6 +1,6 @@
 <template>
   <div style="padding-top: 16px;">
-    <h2>简单用法</h2>
+    <h2>📌 简单用法</h2>
     <p>
       <strong>预览</strong>
     </p>
@@ -12,25 +12,25 @@
     <p>
       <strong>代码</strong>
     </p>
-    <pre><code>{{content}}</code></pre>
+    <!-- <pre><code lang="vue">{{content}}</code></pre> -->
   </div>
 </template>
 <script>
-  import Button from '../../../src/button'
+import WButton from '../../../src/button'
 
-  export default {
-    components: {
-      'w-button': Button
-    },
-    data () {
-      return {
-        content: `
+export default {
+  components: {
+    WButton
+  },
+  data() {
+    return {
+      content: `
           <w-button>默认按钮</w-button>
           <w-button icon="settings">默认按钮</w-button>
           <w-button :loading="true">默认按钮</w-button>
           <w-button disabled>默认按钮</w-button>
       `.replace(/^ {8}/gm, '').trim()
-      }
     }
   }
+}
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div style="padding-top: 16px;">
-    <h2>双向绑定</h2>
+    <h2>📌 双向绑定</h2>
     <p>
       <strong>预览</strong>
     </p>
@@ -12,7 +12,7 @@
     <p>
       <strong>代码</strong>
     </p>
-    <pre><code>{{content}}</code></pre>
+    <!-- <pre><code>{{content}}</code></pre> -->
   </div>
 </template>
 <script>

@@ -1,15 +1,18 @@
 const path = require('path')
 module.exports = {
   base: '/wheel/',
-  title: 'EchoWheel UI',
-  description: '一个好用的UI框架',
+  title: '🚲 EchoWheel UI',
+  description: '一套为开发者学习准备的基于 Vue 2.0 的移动端和 PC 端组件库',
   head: [
     ['link', { rel: 'shortcut icon', href: '../../img/logo.ico' }]
   ],
   themeConfig: {
+    repo: 'zyqq/wheel',// 默认是 false, 设置为 true 来启用
+    lastUpdated: 'Last Updated',
+    // editLinks: true,
     nav: [
-      {text: '主页', link: '/home/'},
-      {text: '文档', link: '/'},
+      {text: '主页', link: '/'},
+      {text: '文档', link: '/guide/'},
       {text: '交流', link: 'https://github.com/zyqq/wheel/issues'},
     ],
     sidebar: [
@@ -31,7 +34,8 @@ module.exports = {
           '/components/grid',
           '/components/layout',
           '/components/toast',
-          '/components/popover'
+          '/components/popover',
+          '/components/collapse'
         ]
       },
 
@@ -39,5 +43,8 @@ module.exports = {
   },
   scss:{
     includePaths: [path.join(__dirname, '../../styles')]
+  },
+  markdown: {
+    lineNumbers: true
   }
 }
