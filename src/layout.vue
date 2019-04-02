@@ -23,10 +23,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@import 'var';
   .layout {
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
+    border: 1px solid $red;
     flex-grow: 1;
     &.hasSider {
       flex-direction: row;

@@ -2,7 +2,7 @@
   <button class="w-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
     <w-icon class="icon" v-if="icon && !loading" :name="icon" ></w-icon>
     <w-icon class="loading icon" v-if="loading" name="loading"></w-icon>
-    <div class="content">
+    <div class="button-content">
       <slot />
     </div>
   </button>  
@@ -33,6 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import 'var';
   @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -41,24 +42,23 @@ export default {
       transform: rotate(360deg);
     }
   }
-
   .w-button {
-    height: var(--button-height);
+    height: $button-height;
     padding: 0 1em;
-    font-size: var(--font-size);
-    border-radius: var(--border-radius);
-    border: 1px solid var(--border-color);
-    background: var(--button-bg);
+    font-size: $font-size;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    background: $button-bg;
     display: inline-flex;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
     &:hover {
       cursor: pointer;
-      border-color: var(--border-color-hover);
+      border-color: $border-color-hover;
     }
     &:active {
-      background: var(--button-active-bg);
+      background: $button-active-bg;
     }
 
     &:focus {
@@ -68,7 +68,7 @@ export default {
       order: 1;
       margin-right: .1em;
     }
-    > .content {
+    > .button-content {
       order: 2;
     }
     &.icon-right {
@@ -77,7 +77,7 @@ export default {
         margin-right: 0;
         margin-left: .1em;
       }
-      > .content {
+      > .button-content {
         order: 1;
       }
     }

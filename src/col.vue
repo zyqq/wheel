@@ -78,6 +78,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+  @import 'var';
   .col {
     $class-prefix: col-;
     @for $n from 1 through 24 {
