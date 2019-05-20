@@ -2,7 +2,7 @@
   "name": "echo-wheel",
   "version": "0.0.3",
   "description": "一个用 Vue 写的 UI 框架",
-  "main": "dist/index.js",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zyqq/wheel.git"
@@ -19,17 +19,14 @@
   },
   "homepage": "https://github.com/zyqq/wheel#readme",
   "scripts": {
-    "start": "parcel index.html --no-cache",
-    "dev-test": "parcel watch test/* --no-cache & karma start",
-    "test": "parcel build test/* --no-cache --no-minify && karma start --single-run",
-    "build": "parcel build index.js --no-cache --no-minify",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "docs:build": "vuepress build docs",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
     "acorn": "^6.1.1",
-    "node-sass": "^4.11.0",
-    "sass-loader": "^7.1.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
     "vue": "^2.6.10",
@@ -51,12 +48,28 @@
     "sinon": "^7.3.1",
     "sinon-chai": "^3.3.0",
     "vue-template-compiler": "^2.6.10",
-    "vuepress": "^0.14.10"
+    "vuepress": "^0.14.10",
+    "@vue/cli-plugin-babel": "^3.0.0",
+    "@vue/cli-plugin-unit-mocha": "^3.0.0",
+    "@vue/cli-service": "^3.0.0",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"
   },
   "resolutions": {
     "webpack-dev-middleware": "3.6.0"
-  }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
