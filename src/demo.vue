@@ -1,8 +1,5 @@
 <template>
   <div>    
-    <p>{{selected &&selected[0] &&selected[0].name || '空'}}</p>
-    <p>{{selected &&selected[1] &&selected[1].name || '空'}}</p>
-    <p>{{selected &&selected[2] &&selected[2].name || '空'}}</p>
     <div style="padding: 20px;">
       <g-cascader :source.sync="source" popover-height="200px"
         @update:source="onUpdateSource"
@@ -10,7 +7,6 @@
         :selected.sync="selected" :load-data="loadData">
       </g-cascader>
     </div>    
-    <p>{{source}}</p>
   </div>
 </template>
 <script>

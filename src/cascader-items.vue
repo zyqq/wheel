@@ -56,7 +56,6 @@ export default {
   },
   methods: {
     rightArrowVisible(item) {
-      console.log(this.loadData, item.isLeaf, item.children)
       return this.loadData ? !(item.isLeaf) : item.children
     },
     onClickLabel(item) {
@@ -92,6 +91,7 @@ export default {
     display: flex;
     align-items: center;
     cursor: pointer;
+    white-space: nowrap;
     &:hover {
       background: $grey;
     }
