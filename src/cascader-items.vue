@@ -1,13 +1,13 @@
 <template>
   <div class="cascader-items" :style="{height: height}">
     <div class="left">
-      <div class="label" v-for="(item, index) in items" :key="index" @click="leftSelected=item">
+      <div class="label" v-for="(item, index) in items" :key="index" @click="onClickLabel(item)">
         {{item.name}}
         <icon class="icon" name="right" v-if="item.children"></icon>
       </div>
     </div>
     <div class="right" v-if="rightItems">
-      <wheel-cascader-items :items="rightItems"></wheel-cascader-items>
+      <wheel-cascader-items ref="right" :items="rightItems" :height="height" :level="level+1" :selected="selected" @update:selected="onUpdateSelected" ></wheel-cascader-items>
     </div>
   </div>
 </template>
@@ -24,6 +24,14 @@ export default {
     },
     height: {
       type: String
+    },
+    selected: {
+      type: Array,
+      default: () => []
+    },
+    level: {
+      type: Number,
+      default: 0
     }
   },
   data() {
@@ -33,13 +41,24 @@ export default {
   },
   computed: {
     rightItems() {
-      if (this.leftSelected && this.leftSelected.children) {
-        return this.leftSelected.children
+      let currentSelected = this.selected[this.level]
+      if (currentSelected && currentSelected.children) {
+        return currentSelected.children
       } else {
         return null
       }
     }
   },
+  methods: {
+    onClickLabel(item) {
+      let copy = JSON.parse(JSON.stringify(this.selected))
+      copy[this.level] = item
+      this.$emit('update:selected', copy)
+    },
+    onUpdateSelected(newSelected) {
+      this.$emit('update:selected', newSelected)
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
