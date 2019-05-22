@@ -5,11 +5,19 @@
         <span class="name">
           {{item.name}}
         </span>
-        <icon class="icon" name="right" v-if="rightArrowVisible(item)"></icon>
+        <span class="icons">
+          <template v-if="item.name === loadingItem.name">
+            <icon class="loading" name="loading" />
+          </template>
+          <template v-else>
+            <icon class="next" name="right" v-if="rightArrowVisible(item)"></icon>
+          </template>
+
+        </span>
       </div>
     </div>
     <div class="right" v-if="rightItems">
-      <wheel-cascader-items ref="right" :load-data="loadData" :items="rightItems" :height="height" :level="level+1" :selected="selected" @update:selected="onUpdateSelected" ></wheel-cascader-items>
+      <wheel-cascader-items ref="right" :loading-item="loadingItem" :load-data="loadData" :items="rightItems" :height="height" :level="level+1" :selected="selected" @update:selected="onUpdateSelected" ></wheel-cascader-items>
     </div>
   </div>
 </template>
@@ -37,6 +45,10 @@ export default {
     },
     loadData: {
       type: Function
+    },
+    loadingItem: {
+      type: Object,
+      default: () => ({})
     }
   },
   data() {
@@ -99,9 +111,14 @@ export default {
       margin-right: 1em;
       user-select: none;
     }
-    .icon {
+    .icons {
       margin-left: auto;
-      transform: scale(0.5);
+      .next {
+        transform: scale(0.5);
+      }
+      .loading {
+        animation: spin 2s infinite linear;
+      }
     }
   }
 }
