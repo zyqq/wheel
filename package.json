@@ -61,7 +61,7 @@
     "vue": "./node_modules/vue/dist/vue.common.js"
   },
   "resolutions": {
-    "webpack-dev-middleware": "3.6.0"
+    "webpack-dev-middleware": "3.7.0"
   },
   "postcss": {
     "plugins": {
