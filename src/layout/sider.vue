@@ -8,7 +8,7 @@
   </transition>
 </template>
 <script>
-import WButton from './button'
+import WButton from '../button/button'
 export default {
   name: "WheelSider",
   components: {WButton},

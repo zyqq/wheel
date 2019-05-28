@@ -22,11 +22,11 @@
   </div>
 </template>
 <script>
-  import WTabs from '../../../src/tabs'
-  import WTabsBody from '../../../src/tabs-body'
-  import WTabsHead from '../../../src/tabs-head'
-  import WTabsItem from '../../../src/tabs-item'
-  import WTabsPane from '../../../src/tabs-pane'
+  import WTabs from '../../../src/tabs/tabs'
+  import WTabsBody from '../../../src/tabs/tabs-body'
+  import WTabsHead from '../../../src/tabs/tabs-head'
+  import WTabsItem from '../../../src/tabs/tabs-item'
+  import WTabsPane from '../../../src/tabs/tabs-pane'
 
   export default {
     components: {WTabs, WTabsBody, WTabsHead, WTabsItem, WTabsPane},

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import Icon from './icon'
+import Icon from '../icon/icon'
 export default {
   name: 'WheelButton',
   components: {
@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import 'var';
+  @import '../../styles/_var.scss';
 
   .w-button {
     height: $button-height;

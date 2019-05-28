@@ -46,7 +46,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import 'var';
+@import "../../styles/_var.scss";
 
 .collapse-item {
   > .title {

@@ -14,7 +14,7 @@
 
 </template>
 <script>
-import Icon from './icon.vue'
+import Icon from '../icon/icon.vue'
 
 export default {
   name: 'WheelInput',
@@ -41,7 +41,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import 'var';
+@import '../../styles/_var.scss';
   .wrapper {
     display: inline-flex;
     align-items: center;

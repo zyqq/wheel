@@ -1,4 +1,4 @@
-import Toast from './toast.vue'
+import Toast from './toast/toast.vue'
 
 let currentToast
 export default {

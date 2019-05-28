@@ -22,7 +22,7 @@
   </div>
 </template>
 <script>
-import Icon from './icon'
+import Icon from '../icon/icon'
 export default {
   name: 'WheelCascaderItems',
   components: {
@@ -83,7 +83,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "var";
+@import "../../styles/_var.scss";
 .cascader-items {
   display: flex;
   align-items: flex-start;

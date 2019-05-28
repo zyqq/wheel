@@ -10,14 +10,14 @@
       </div>
     </div>
     <div class="g-slides-dots">
-      <span @click="onClickPrev">
+      <span @click="onClickPrev" data-action="prev">
         <w-icon name="left"></w-icon>
       </span>
       <span v-for="n in childrenLength" :class="{active: selectedIndex === n-1}"
         @click="select(n-1)" :key="n" :data-index="n-1">
         {{n}}
       </span>
-      <span @click="onClickNext">
+      <span @click="onClickNext" data-action="next">
         <w-icon name="right"></w-icon>
       </span>
     </div>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import WIcon from './icon'
+  import WIcon from '../icon/icon'
 
   export default {
     components: {
@@ -61,6 +61,9 @@
     },
     updated () {
       this.updateChildren()
+    },
+    beforeDestroy() {
+      this.pause()
     },
     computed: {
       selectedIndex () {

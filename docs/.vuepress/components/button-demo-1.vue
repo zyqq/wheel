@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-import WButton from '../../../src/button'
+import WButton from '../../../src/button/button'
 
 export default {
   components: {

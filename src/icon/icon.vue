@@ -4,7 +4,7 @@
   </svg>
 </template>
 <script>
-import './svg.js'
+import '../svg.js'
 
 export default {
   name: "WheelIcon",

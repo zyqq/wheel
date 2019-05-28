@@ -16,8 +16,8 @@
 </template>
 <script>
 import CascaderItems from './cascader-items'
-import ClickOutside from './click-outside'
-import {removeListener} from './click-outside'
+import ClickOutside from '../click-outside'
+import {removeListener} from '../click-outside'
 
 export default {
   name: 'WheelCascader',
@@ -108,7 +108,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-@import "var";
+@import "../../styles/_var.scss";
 .cascader {
   position: relative;
   .trigger {

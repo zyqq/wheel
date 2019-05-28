@@ -16,7 +16,7 @@
   </div>
 </template>
 <script>
-  import WInput from '../../../src/input'
+  import WInput from '../../../src/input/input'
 
   export default {
     components: {WInput},

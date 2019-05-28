@@ -23,8 +23,8 @@
   </div>
 </template>
 <script>
-import WButton from '../../../src/button'
-import WButtonGroup from '../../../src/button-group'
+import WButton from '../../../src/button/button'
+import WButtonGroup from '../../../src/button/button-group'
 
 export default {
   components: {

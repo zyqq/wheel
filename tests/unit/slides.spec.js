@@ -2,8 +2,8 @@ import chai, {expect} from 'chai'
 import sinon from 'sinon'
 import sinonChai from 'sinon-chai'
 import {mount} from '@vue/test-utils'
-import Slides from '@/slides'
-import SlidesItem from '@/slides-item'
+import Slides from '../../src/slides/slides'
+import SlidesItem from '../../src/slides/slides-item'
 import Vue from 'vue'
 chai.use(sinonChai)
 
@@ -129,6 +129,68 @@ describe('Slides.vue', () => {
     }, 21)
   })
 
-  it('可以点击上一张', () => {})
-  it('可以点击下一张', () => {})
+  it('可以点击上一张', (done) => {
+    Vue.component('WSlidesItem', SlidesItem)
+    const callback = sinon.fake()
+    const wrapper = mount(Slides, {
+      propsData: {
+        autoPlay: true,
+        autoPlayDelay: 20,
+        selected: '1'
+      },
+      slots: {
+        default: `
+          <w-slides-item name="1">
+            <div class="box1">1</div>
+          </w-slides-item>
+          <w-slides-item name="2">
+            <div class="box2">2</div>
+          </w-slides-item>
+          <w-slides-item name="3">
+            <div class="box3">3</div>
+          </w-slides-item>
+        `
+      },
+      listeners: {
+        'update:selected': callback
+      }
+    })
+    setTimeout(() => {
+      wrapper.find('[data-action="prev"]').trigger('click')
+      expect(callback).to.have.been.calledWith('3')
+      done()
+    }, 21)
+  })
+  it('可以点击下一张', (done) => {
+    Vue.component('WSlidesItem', SlidesItem)
+    const callback = sinon.fake()
+    const wrapper = mount(Slides, {
+      propsData: {
+        autoPlay: true,
+        autoPlayDelay: 20,
+        selected: '1'
+      },
+      slots: {
+        default: `
+          <w-slides-item name="1">
+            <div class="box1">1</div>
+          </w-slides-item>
+          <w-slides-item name="2">
+            <div class="box2">2</div>
+          </w-slides-item>
+          <w-slides-item name="3">
+            <div class="box3">3</div>
+          </w-slides-item>
+        `
+      },
+      listeners: {
+        'update:selected': callback
+      }
+    })
+    setTimeout(() => {
+      wrapper.find('[data-action="next"]').trigger('click')
+      expect(callback).to.have.been.calledWith('2')
+      done()
+    }, 21)
+  })
 })

@@ -53,8 +53,8 @@
   }
 </style>
 <script>
-  import WRow from '../../../src/row'
-  import WCol from '../../../src/col'
+  import WRow from '../../../src/grid/row'
+  import WCol from '../../../src/grid/col'
 
   export default {
     components: {WRow, WCol},

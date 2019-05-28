@@ -33,11 +33,11 @@
   }
 </style>
 <script>
-  import WLayout from '../../../src/layout'
-  import WHeader from '../../../src/header'
-  import WFooter from '../../../src/footer'
-  import WContent from '../../../src/content'
-  import WSider from '../../../src/sider'
+  import WLayout from '../../../src/layout/layout'
+  import WHeader from '../../../src/layout/header'
+  import WFooter from '../../../src/layout/footer'
+  import WContent from '../../../src/layout/content'
+  import WSider from '../../../src/layout/sider'
 
   export default {
     components: {WLayout, WHeader, WFooter, WContent, WSider},

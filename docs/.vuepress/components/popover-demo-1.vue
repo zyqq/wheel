@@ -41,8 +41,8 @@
 <style scoped>
 </style>
 <script>
-  import WButton from '../../../src/button'
-  import WPopover from '../../../src/popover'
+  import WButton from '../../../src/button/button'
+  import WPopover from '../../../src/popover/popover'
 
 
   export default {

@@ -44,7 +44,7 @@ export default {
       this.$refs.popover.addEventListener('mouseleave', this.close)
     }
   },
-  destroyed() {
+  beforeDestroy () {
     if(!this.$refs.popover){
       return;
     } 

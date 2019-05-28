@@ -17,8 +17,8 @@
   </div>
 </template>
 <script>
-  import WCollapse from '../../../src/collapse'
-  import WCollapseItem from '../../../src/collapse-item'
+  import WCollapse from '../../../src/collapse/collapse'
+  import WCollapseItem from '../../../src/collapse/collapse-item'
 
   export default {
     components: {
