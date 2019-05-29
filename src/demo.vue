@@ -21,7 +21,7 @@
       </w-sub-nav>
       <w-nav-item name="hire">招聘</w-nav-item>
     </w-nav>
-    <w-nav :selected.sync="selected" vertical style="width: 200px; margin: 20px;">
+    <w-nav :selected.sync="selected" vertical style="width: 200px; margin: 20px;margin-top:200px;">
       <w-nav-item name="home">首页</w-nav-item>
       <w-sub-nav name="about">
         <template slot="title" >关于</template>
