@@ -6,6 +6,11 @@
 <script>
 export default {
   name: 'WheelNav',
+  provide() {
+    return {
+      'root': this
+    }
+  },
   props: {
     selected: {
       type: Array,
@@ -16,6 +21,11 @@ export default {
       default: false
     }
   },
+  data() {
+    return {
+      items: []
+    }
+  },
   mounted () {
     this.updateChildren()
     this.listenToChildren()
@@ -23,12 +33,10 @@ export default {
   updated() {
     this.updateChildren()
   },
-  computed: {
-    items() {
-      return this.$children.filter(vm => vm.$options.name === 'WheelNavItem')
-    }
-  },
   methods: {
+    addItem(vm) {
+      this.items.push(vm)
+    },
     updateChildren() {
       this.items.forEach(vm => {
         if(this.selected.indexOf(vm.name) >= 0){
@@ -48,7 +56,6 @@ export default {
               this.$emit('update:selected', copy)
             }
           } else {
-            console.log(name)
             this.$emit('update:selected', [name])
           }
         })
