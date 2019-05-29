@@ -21,6 +21,7 @@
       </w-sub-nav>
       <w-nav-item name="hire">招聘</w-nav-item>
     </w-nav>
+    <p>你好，我是中文</p>
   </div>
 </template>
 <script>

@@ -65,8 +65,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+  @import '../../styles/_var.scss';
   .w-nav {
     display: flex;
-    border: 1px solid red;
+    border-bottom: 1px solid $grey;
+    color: $color;
+    cursor: pointer;
   }
 </style>

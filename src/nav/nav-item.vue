@@ -30,10 +30,28 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+  @import '../../styles/_var.scss';
   .w-nav-item {
     padding: 10px 20px;
+    position: relative;
     &.selected {
-      background: red;
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-bottom: 2px solid $blue;
+        width: 100%;
+      }
+    }
+  }
+  .w-sub-nav .w-nav-item {
+    &.selected {
+      color: $color;
+      background: $grey;
+      &::after {
+        display: none;
+      }
     }
   }
 </style>
