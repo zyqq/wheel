@@ -3,13 +3,13 @@
    <div>
     <template v-if="animationEnabled">
       <transition name="slide">
-        <div class="g-slides-item" v-if="visible" :class="{reverse}">
+        <div class="w-slides-item" v-if="visible" :class="{reverse}">
           <slot></slot>
         </div>
       </transition>
     </template>
     <template v-else>
-      <div class="g-slides-item" v-if="visible" :class="{reverse}">
+      <div class="w-slides-item" v-if="visible" :class="{reverse}">
         <slot></slot>
       </div>
     </template>

@@ -1,15 +1,15 @@
 <template>
-  <div class="g-slides" @mouseenter="onMouseEnter"
+  <div class="w-slides" @mouseenter="onMouseEnter"
     @mouseleave="onMouseLeave"
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
     >
-    <div class="g-slides-window" ref="window">
-      <div class="g-slides-wrapper">
+    <div class="w-slides-window" ref="window">
+      <div class="w-slides-wrapper">
         <slot></slot>
       </div>
     </div>
-    <div class="g-slides-dots">
+    <div class="w-slides-dots">
       <span @click="onClickPrev" data-action="prev">
         <w-icon name="left"></w-icon>
       </span>
@@ -161,7 +161,7 @@
 </script>
 
 <style lang="scss" scoped>
-  .g-slides {
+  .w-slides {
     &-window {overflow: hidden;}
     &-wrapper {
       position: relative;

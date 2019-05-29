@@ -1,33 +1,27 @@
 <template>
   <div>    
-    <div style="padding: 20px;">
-      <w-slides class="wrapper" width="300px" height="200px" :selected.sync="selected">
-        <w-slides-item name="1">
-          <div class="box">1</div>
-        </w-slides-item>
-        <w-slides-item name="2">
-          <div class="box">2</div>
-        </w-slides-item>
-        <w-slides-item name="3">
-          <div class="box">3</div>
-        </w-slides-item>
-      </w-slides>
-    </div>    
+    <w-nav :selected.sync="selected">
+      <w-nav-item name="home">首页</w-nav-item>
+      <w-nav-item name="about">关于</w-nav-item>
+      <w-nav-item name="hire">招聘</w-nav-item>
+    </w-nav>
   </div>
 </template>
 <script>
-  import WSlides from './slides/slides'
-  import WSlidesItem from './slides/slides-item'
+  import WNav from './nav/nav'
+  import WNavItem from './nav/nav-item'
+  import WSubNav from './nav/sub-nav'
 
   export default {
     name: "demo",
     components: {
-      WSlides,
-      WSlidesItem
+      WNav,
+      WNavItem,
+      WSubNav
     },
     data () {
       return {
-        selected: undefined
+        selected: ['home']
       };
     },
     methods: {
