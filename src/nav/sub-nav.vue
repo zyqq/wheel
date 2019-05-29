@@ -1,8 +1,8 @@
 <template>
-  <div class="w-sub-nav" :class="{active}" v-click-outside="close">
+  <div class="w-sub-nav" :class="{active, vertical}" v-click-outside="close">
     <span class="w-sub-nav-label" @click="onClick">
       <slot name="title"></slot>
-      <span class="w-sub-nav-icon" :class="{open}">
+      <span class="w-sub-nav-icon" :class="{open, vertical}">
         <w-icon name="right"></w-icon>
       </span>
     </span>
@@ -89,14 +89,16 @@ export default {
   @import "../../styles/_var.scss";
   .w-sub-nav {
     position: relative;
-    &.active {
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        border-bottom: 2px solid $blue;
-        width: 100%;
+    &:not(.vertical) {
+      &.active {
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          border-bottom: 2px solid $blue;
+          width: 100%;
+        }
       }
     }
     &-label { padding: 10px 20px; display: block; }
@@ -144,6 +146,12 @@ export default {
       transition: transform 250ms;
       display: inline-flex; margin-left: 1em;
       svg {fill: $light-color;}
+      &.vertical {
+        transform: rotate(90deg);
+        &.open {
+          transform: rotate(270deg);
+        }
+      }
       &.open {
         transform: rotate(180deg);
       }
