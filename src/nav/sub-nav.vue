@@ -6,9 +6,12 @@
         <w-icon name="right"></w-icon>
       </span>
     </span>
-    <div class="w-sub-nav-popover" v-show="open">
-      <slot></slot>
-    </div>
+    <transition @enter="enter" @leave="leave" @after-leave="afterLeave"
+      @after-enter="afterEnter">
+      <div class="w-sub-nav-popover" v-show="open" :class="{vertical}">
+        <slot></slot>
+      </div>
+    </transition>
   </div>
 </template>
 <script>
@@ -20,7 +23,7 @@ export default {
   components: {
     WIcon
   },
-  inject: ['root'],
+  inject: ['root', 'vertical'],
   props: {
     name: {
       type: String,
@@ -38,6 +41,30 @@ export default {
     }
   },
   methods: {
+    enter (el, done) {
+      let {height} = el.getBoundingClientRect()
+      el.style.height = 0
+      el.getBoundingClientRect() // 浏览器会自动合并height的设置，因此加此一行计算height高度使得上一行代码生效
+      el.style.height = `${height}px`
+      el.addEventListener('transitionend', () => {
+        done()
+      })
+    },
+    afterEnter (el) {
+      el.style.height = 'auto'
+    },
+    leave: function (el, done) {
+      let {height} = el.getBoundingClientRect()
+      el.style.height = `${height}px`
+      el.getBoundingClientRect()
+      el.style.height = 0
+      el.addEventListener('transitionend', () => {
+        done()
+      })
+    },
+    afterLeave: function (el) {
+      el.style.height = 'auto'
+    },
     onClick() {
       this.open = !this.open
     },
@@ -80,6 +107,14 @@ export default {
       font-size: $font-size;
       color: $light-color;
       min-width: 8em;
+      &.vertical {
+        position: static;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+        transition: height 250ms;
+        overflow: hidden;
+      }
     }
   }
   .w-sub-nav .w-sub-nav {
