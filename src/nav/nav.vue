@@ -23,7 +23,8 @@ export default {
   },
   data() {
     return {
-      items: []
+      items: [],
+      namePath: []
     }
   },
   mounted () {
@@ -71,5 +72,6 @@ export default {
     border-bottom: 1px solid $grey;
     color: $color;
     cursor: pointer;
+    user-select: none;
   }
 </style>
