@@ -59,8 +59,15 @@
     },
     data () {
       return {
-        selected: ['home']
+        selected: 'home'
       };
+    },
+    watch: {
+      selected(newValue) {
+        if(newValue === 'home') {
+          alert('hi')
+        }
+      }
     },
     methods: {
     }
