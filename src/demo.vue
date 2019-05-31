@@ -1,6 +1,6 @@
 <template>
   <div style="margin: 20px;">
-    <w-pager :total-page="20" :current-page="3"></w-pager>
+    <w-pager :total-page="10" :current-page.sync="currentPage"></w-pager>
   </div>
 </template>
 <script>
@@ -10,7 +10,12 @@
     name: "demo",
     components: {
       WPager
-    }
+    },
+    data() {
+      return {
+        currentPage: 1
+      }
+    },
   };
 </script>
 <style lang="scss" scoped>

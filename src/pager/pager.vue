@@ -1,20 +1,20 @@
 <template>
-  <div class="wheel-pager">
-    <span class="wheel-pager-nav prev" :class="{disabled:currentPage===1}">
+  <div class="wheel-pager" :class="{hide: hideIfOnePage && totalPage <=1 }">
+    <span class="wheel-pager-nav prev" :class="{disabled:currentPage===1}" @click="onClickPage(currentPage - 1)">
       <w-icon name="left"></w-icon>
     </span>
-    <template v-for="page in pages">
+    <template v-for="(page, i) in pages">
       <template v-if="page === currentPage">
-        <span :key="page" class="wheel-pager-item current">{{page}}</span>
+        <span :key="i" class="wheel-pager-item current">{{page}}</span>
       </template>
       <template v-else-if="page === '...'">
-        <w-icon :key="page" class="wheel-pager-separator" name="dots"></w-icon>
+        <w-icon :key="i" class="wheel-pager-separator" name="dots"></w-icon>
       </template>
       <template v-else>
-        <span :key="page" class="wheel-pager-item other">{{page}}</span>
+        <span :key="i" class="wheel-pager-item other" @click="onClickPage(page)">{{page}}</span>
       </template>
     </template>
-    <span class="wheel-pager-nav next" :class="{disabled: currentPage===totalPage}">
+    <span class="wheel-pager-nav next" :class="{disabled: currentPage===totalPage}" @click="onClickPage(currentPage + 1)">
       <w-icon name="right"></w-icon>
     </span>
   </div>
@@ -39,20 +39,27 @@ export default {
       default: true
     }
   },
-  data() {
-    let {currentPage, totalPage} = this
-    let pages = unique([1, currentPage,currentPage-1, currentPage-2, currentPage +1, currentPage +1, totalPage])
-                .filter((n) => n >= 1 && n <= totalPage)
-                .sort((a, b) => a-b)
-                .reduce((prev, current, index, array) => {
-                  prev.push(current)
-                  array[index+1] && array[index+1] - array[index] > 1 && prev.push('...')
-                  return prev
-                }, [])
-    return {
-      pages
+  computed: {
+    pages() {
+      let {currentPage, totalPage} = this
+      return unique([1, currentPage,currentPage-1, currentPage-2, currentPage +1, currentPage +2, totalPage])
+                  .filter((n) => n >= 1 && n <= totalPage)
+                  .sort((a, b) => a-b)
+                  .reduce((prev, current, index, array) => {
+                    prev.push(current)
+                    array[index+1] && array[index+1] - array[index] > 1 && prev.push('...')
+                    return prev
+                  }, [])
+
     }
-  }
+  },
+  methods: {
+    onClickPage(n) {
+      if(n >=1 && n <= this.totalPage) {
+        this.$emit('update:currentPage', n)
+      }
+    }
+  },
 }
 function unique(array) {
   const obj = {}
@@ -69,6 +76,10 @@ function unique(array) {
     $width: 20px;
     $height: 20px;
     $font-size: 12px;
+    user-select: none;
+    &.hide {
+      display: none;
+    }
     &-separator {
       width: $width;
       font-size: $font-size;
@@ -83,7 +94,9 @@ function unique(array) {
     &-nav {
       margin: 0 4px; display: inline-flex; justify-content: center; align-items: center;
       background: $grey; height: $height; width: $width; border-radius: $border-radius; font-size: $font-size;
+      cursor: pointer;
       &.disabled {
+        cursor: default;
         svg { fill: darken($grey, 30%); }
       }
     }
