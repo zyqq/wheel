@@ -1,12 +1,14 @@
 <template>
   <div class="wheel-table-wrapper" ref="wrapper">
-    <div :style="{height, overflow: 'auto'}">
+    <div :style="{height, overflow: 'auto'}" ref="tableWrapper">
       <table ref="table" class="wheel-table" :class="{bordered, compact, striped: striped}">
         <thead>
         <tr>
-          <th><input type="checkbox" @change="onChangeAllItems" ref="allChecked" :checkded="areAllItemsSelected"/></th>
-          <th v-if="numberVisible">#</th>
-          <th v-for="column in columns" :key="column.field">
+          <th v-if="expendField" :style="{width: '50px'}" class="wheel-table-center"></th>
+          <th v-if="checkable" :style="{width: '50px'}" class="wheel-table-center">
+            <input type="checkbox" @change="onChangeAllItems" ref="allChecked" :checked="areAllItemsSelected"/></th>
+          <th :style="{width: '50px'}" v-if="numberVisible">#</th>
+          <th :style="{width: column.width + 'px'}" v-for="column in columns" :key="column.field">
             <div class="wheel-table-header">
               {{column.text}}
               <span v-if="column.field in orderBy" class="wheel-table-sorter" @click="changeOrderBy(column.field)">
@@ -15,19 +17,36 @@
               </span>
             </div>
           </th>
+          <th ref="actionsHeader" v-if="$scopedSlots.default"></th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(item,index) in dataSource" :key="item.id">
-          <td>
-            <input type="checkbox" @change="onChangeItem(item, index, $event)"
-              :checked="inSelectedItems(item)"
-            /></td>
-          <td v-if="numberVisible">{{index+1}}</td>
-          <template v-for="column in columns">
-            <td :key="column.field">{{item[column.field]}}</td>
+          <template v-for="item,index in dataSource">
+            <tr :key="item.id">
+              <td v-if="expendField" :style="{width: '50px'}" class="wheel-table-center">
+                <w-icon class="wheel-table-expendIcon" name="right" :class="{expended: expendedIds.indexOf(item.id) >= 0}"
+                  @click="expendItem(item.id)"/>
+              </td>
+              <td v-if="checkable" :style="{width: '50px'}" class="wheel-table-center">
+                <input type="checkbox" @change="onChangeItem(item, index, $event)"
+                  :checked="inSelectedItems(item)"
+                /></td>
+              <td :style="{width: '50px'}" v-if="numberVisible">{{index+1}}</td>
+              <template v-for="column in columns">
+                <td :style="{width: column.width + 'px'}" :key="column.field">{{item[column.field]}}</td>
+              </template>
+              <td v-if="$scopedSlots.default">
+                <div ref="actions" style="display: inline-block;">
+                  <slot :item="item"></slot>
+                </div>
+              </td>
+            </tr>
+            <tr v-if="inExpendedIds(item.id)" :key="`${item.id}-expend`">
+              <td :colspan="columns.length + expendedCellColSpan">
+                {{item[expendField] || '空'}}
+              </td>
+            </tr>
           </template>
-        </tr>
         </tbody>
       </table>
     </div>
@@ -45,7 +64,10 @@
     components: {WIcon},
     props: {
       height: {
-        type: [Number, String]
+        type: Number
+      },
+      expendField:{
+        type: String
       },
       orderBy: {
         type: Object,
@@ -85,6 +107,15 @@
       bordered: {
         type: Boolean,
         default: false
+      },
+      checkable: {
+        type: Boolean,
+        default: false
+      }
+    },
+    data() {
+      return {
+        expendedIds: []
       }
     },
     computed: {
@@ -98,6 +129,12 @@
           break
         }
         return equal
+      },
+      expendedCellColSpan () {
+        let result = 0
+        if (this.checkable) { result += 1 }
+        if (this.expendField) { result += 1 }
+        return result
       }
     },
     watch: {
@@ -112,36 +149,57 @@
       }
     },
     mounted() {
-      let table2 = this.$refs.table.cloneNode(true) // 深拷贝table
+      // 将table复制一份，并去掉tbody，复制原来的thead
+      let table2 = this.$refs.table.cloneNode(false)
       this.table2 = table2
       table2.classList.add('wheel-table-copy')
+      let tHead = this.$refs.table.children[0]
+      let {height} = tHead.getBoundingClientRect()
+      this.$refs.tableWrapper.style.marginTop = height + 'px'
+      this.$refs.tableWrapper.style.height = this.height - height + 'px'
+      table2.appendChild(tHead)
       this.$refs.wrapper.appendChild(table2)
-      this.updateHeadersWidth()
-      this.onWindowResize = () => this.updateHeadersWidth()
-      window.addEventListener('resize', this.onWindowResize)
+
+      // 手动获取操作按钮的td宽度，给操作列加上此宽度，实现列对齐
+      if (this.$scopedSlots.default) {
+        let div = this.$refs.actions[0]
+        let {width} = div.getBoundingClientRect()
+        let parent = div.parentNode
+        let styles = getComputedStyle(parent)
+        let paddingLeft = styles.getPropertyValue('padding-left')
+        let paddingRight = styles.getPropertyValue('padding-right')
+        let borderLeft = styles.getPropertyValue('border-left-width')
+        let borderRight = styles.getPropertyValue('border-right-width')
+        let width2 = width + parseInt(paddingRight) + parseInt(paddingRight) + parseInt(borderLeft) + parseInt(borderRight) + 'px'
+        this.$refs.actionsHeader.style.width = parseInt(width2) + this.getScrollWidth() + 'px'
+        this.$refs.actions.map(div => {
+          div.parentNode.style.width = width2
+        })
+      }
     },
     beforeDestroy() {
       this.table2.remove()
-      window.removeEventListener('resize', this.onWindowResize)
-
     },
-    methods: {
-      // 将复制的table的tbody去掉，获取原有table的header的每列的高度依次赋值给复制的table的每个th，即可使得复制的theader与原有的列对齐
-      updateHeadersWidth () {
-        let table2 = this.table2
-        let tableHeader = Array.from(this.$refs.table.children).filter(node => node.tagName.toLowerCase() === 'thead')[0]
-        let tableHeader2
-        Array.from(table2.children).map(node => {
-          if (node.tagName.toLowerCase() !== 'thead') {
-            node.remove()
-          } else {
-            tableHeader2 = node
-          }
-        })
-        Array.from(tableHeader.children[0].children).map((th, i) => {
-          const {width} = th.getBoundingClientRect()
-          tableHeader2.children[0].children[i].style.width = width + 'px'
-        })
+    methods: {   
+      //思路就是设置一个div没有滚动条的,获取其宽度,然后再让其拥有滚动条,在获取宽度,取差值
+      getScrollWidth() {
+        var noScroll, scroll, oDiv = document.createElement("DIV");
+        oDiv.style.cssText = "position:absolute; top:-1000px; width:100px; height:100px; overflow:hidden;";
+        noScroll = document.body.appendChild(oDiv).clientWidth;
+        oDiv.style.overflowY = "scroll";
+        scroll = oDiv.clientWidth;
+        document.body.removeChild(oDiv);
+        return noScroll-scroll;
+      },
+      inExpendedIds (id) {
+        return this.expendedIds.indexOf(id) >= 0
+      },
+      expendItem (id) {
+        if (this.inExpendedIds(id)) {
+          this.expendedIds.splice(this.expendedIds.indexOf(id), 1)
+        } else {
+          this.expendedIds.push(id)
+        }
       },
       changeOrderBy (key) {
         const copy = JSON.parse(JSON.stringify(this.orderBy))
@@ -264,6 +322,17 @@
       left: 0;
       width: 100%;
       background: white;
+    }
+    &-expendIcon {
+      width: 10px;
+      height: 10px;
+      transition: transform 250ms;
+      &.expended{
+        transform: rotate(90deg)
+      }
+    }
+    & &-center {
+      text-align: center;
     }
   }
 </style> 

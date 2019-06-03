@@ -3,8 +3,12 @@
     {{selected}}
     <div style="margin: 20px;">
       <w-table :columns="columns" :data-source="dataSource" bordered :selected-items.sync="selected"
-        :order-by.sync="orderBy" @update:orderBy="x" :loading="loading" height="400px"
-      ></w-table>
+        :order-by.sync="orderBy" @update:orderBy="x" :loading="loading" :height="400" expend-field="description" checkable>
+        <template slot-scope="scope">
+          <button @click="edit(scope.item)">编辑</button>
+          <button @click="view(scope.item)">查看</button>
+        </template>
+      </w-table>
     </div>
     <div style="margin: 20px;">
       <w-table :columns="columns" :data-source="dataSource" bordered compact :striped="false"></w-table>
@@ -33,12 +37,12 @@
           score: 'desc'
         },
         columns: [
-          {text: '姓名', field: 'name'},
+          {text: '姓名', field: 'name', width: 100},
           {text: '分数', field: 'score'},
         ],
         dataSource: [
-          {id: 1, name: '方方', score: 100},
-          {id: 2, name: '圆圆', score: 99},
+          {id: 1, name: '方方', score: 100, description: 'xxxx'},
+          {id: 2, name: '圆圆', score: 99, description: 'yyyy'},
           {id: 3, name: '张三', score: 100},
           {id: 4, name: '李四', score: 99},
           {id: 5, name: '超人', score: 100},
@@ -61,6 +65,12 @@
       }
     },
     methods: {
+      edit(item){
+        alert(`开始编辑${item.id}`)
+      },
+      view(item){
+        alert(`开始查看${item.id}`)
+      },
       x() {
         this.loading = true
         setTimeout(() => {
