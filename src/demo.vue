@@ -2,7 +2,9 @@
   <div>
     {{selected}}
     <div style="margin: 20px;">
-      <w-table :columns="columns" :data-source="dataSource" bordered :selected-items.sync="selected"></w-table>
+      <w-table :columns="columns" :data-source="dataSource" bordered :selected-items.sync="selected"
+        :order-by.sync="orderBy" @update:orderBy="x" :loading="loading"
+      ></w-table>
     </div>
     <div style="margin: 20px;">
       <w-table :columns="columns" :data-source="dataSource" bordered compact :striped="false"></w-table>
@@ -26,6 +28,10 @@
       return {
         currentPage: 1,
         selected: [],
+        loading: false,
+        orderBy: { // true 表示开启排序，但是不确定asc、desc，不传则关闭
+          score: 'desc'
+        },
         columns: [
           {text: '姓名', field: 'name'},
           {text: '分数', field: 'score'},
@@ -40,6 +46,15 @@
           {id: 7, name: '蜘蛛侠', score: 100},
           {id: 8, name: '钢铁侠', score: 99},
         ]
+      }
+    },
+    methods: {
+      x() {
+        this.loading = true
+        setTimeout(() => {
+          this.dataSource = this.dataSource.sort((a, b) => a.score - b.score)
+          this.loading = false
+        }, 3000);
       }
     },
   };
