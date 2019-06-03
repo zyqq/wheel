@@ -1,34 +1,36 @@
 <template>
-  <div class="wheel-table-wrapper">
-    <table class="wheel-table" :class="{bordered, compact, striped: striped}">
-      <thead>
-      <tr>
-        <th><input type="checkbox" @change="onChangeAllItems" ref="allChecked" :checkded="areAllItemsSelected"/></th>
-        <th v-if="numberVisible">#</th>
-        <th v-for="column in columns" :key="column.field">
-          <div class="wheel-table-header">
-            {{column.text}}
-            <span v-if="column.field in orderBy" class="wheel-table-sorter" @click="changeOrderBy(column.field)">
-              <w-icon name="asc" :class="{active: orderBy[column.field] === 'asc'}"/>
-              <w-icon name="desc" :class="{active: orderBy[column.field] === 'desc'}"/>
-            </span>
-          </div>
-        </th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(item,index) in dataSource" :key="item.id">
-        <td>
-          <input type="checkbox" @change="onChangeItem(item, index, $event)"
-            :checked="inSelectedItems(item)"
-          /></td>
-        <td v-if="numberVisible">{{index+1}}</td>
-        <template v-for="column in columns">
-          <td :key="column.field">{{item[column.field]}}</td>
-        </template>
-      </tr>
-      </tbody>
-    </table>
+  <div class="wheel-table-wrapper" ref="wrapper">
+    <div :style="{height, overflow: 'auto'}">
+      <table ref="table" class="wheel-table" :class="{bordered, compact, striped: striped}">
+        <thead>
+        <tr>
+          <th><input type="checkbox" @change="onChangeAllItems" ref="allChecked" :checkded="areAllItemsSelected"/></th>
+          <th v-if="numberVisible">#</th>
+          <th v-for="column in columns" :key="column.field">
+            <div class="wheel-table-header">
+              {{column.text}}
+              <span v-if="column.field in orderBy" class="wheel-table-sorter" @click="changeOrderBy(column.field)">
+                <w-icon name="asc" :class="{active: orderBy[column.field] === 'asc'}"/>
+                <w-icon name="desc" :class="{active: orderBy[column.field] === 'desc'}"/>
+              </span>
+            </div>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(item,index) in dataSource" :key="item.id">
+          <td>
+            <input type="checkbox" @change="onChangeItem(item, index, $event)"
+              :checked="inSelectedItems(item)"
+            /></td>
+          <td v-if="numberVisible">{{index+1}}</td>
+          <template v-for="column in columns">
+            <td :key="column.field">{{item[column.field]}}</td>
+          </template>
+        </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="wheel-table-loading" v-if="loading">
       <w-icon name="loading" />
     </div>
@@ -42,6 +44,9 @@
     name: "WheelTable",
     components: {WIcon},
     props: {
+      height: {
+        type: [Number, String]
+      },
       orderBy: {
         type: Object,
         default: () => ({})
@@ -106,7 +111,38 @@
         }
       }
     },
+    mounted() {
+      let table2 = this.$refs.table.cloneNode(true) // 深拷贝table
+      this.table2 = table2
+      table2.classList.add('wheel-table-copy')
+      this.$refs.wrapper.appendChild(table2)
+      this.updateHeadersWidth()
+      this.onWindowResize = () => this.updateHeadersWidth()
+      window.addEventListener('resize', this.onWindowResize)
+    },
+    beforeDestroy() {
+      this.table2.remove()
+      window.removeEventListener('resize', this.onWindowResize)
+
+    },
     methods: {
+      // 将复制的table的tbody去掉，获取原有table的header的每列的高度依次赋值给复制的table的每个th，即可使得复制的theader与原有的列对齐
+      updateHeadersWidth () {
+        let table2 = this.table2
+        let tableHeader = Array.from(this.$refs.table.children).filter(node => node.tagName.toLowerCase() === 'thead')[0]
+        let tableHeader2
+        Array.from(table2.children).map(node => {
+          if (node.tagName.toLowerCase() !== 'thead') {
+            node.remove()
+          } else {
+            tableHeader2 = node
+          }
+        })
+        Array.from(tableHeader.children[0].children).map((th, i) => {
+          const {width} = th.getBoundingClientRect()
+          tableHeader2.children[0].children[i].style.width = width + 'px'
+        })
+      },
       changeOrderBy (key) {
         const copy = JSON.parse(JSON.stringify(this.orderBy))
         let oldValue = copy[key]
@@ -204,6 +240,7 @@
     }
     &-wrapper {
       position: relative;
+      overflow: auto;
     }
     &-loading {
       background: rgba(255, 255, 255, 0.8);
@@ -220,6 +257,13 @@
         height: 50px;
         @include spin;
       }
+    }
+    &-copy {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: white;
     }
   }
 </style> 
