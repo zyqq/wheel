@@ -64,7 +64,6 @@
       },
       beforeUploadFiles (rawFiles, newNames) {
         rawFiles = Array.from(rawFiles)
-        console.log(rawFiles)
         for (let i = 0; i < rawFiles.length; i++) {
           let {size, type} = rawFiles[i]
           if (size > this.sizeLimit) {
@@ -80,7 +79,6 @@
         return true
       },
       afterUploadFiles (newName, url) {
-        console.log(1)
         let file = this.fileList.filter(f => f.name === newName)[0]
         let index = this.fileList.indexOf(file)
         let fileCopy = JSON.parse(JSON.stringify(file))
@@ -88,7 +86,6 @@
         fileCopy.status = 'success'
         let fileListCopy = [...this.fileList]
         fileListCopy.splice(index, 1, fileCopy)
-        console.log('fileCopy', fileCopy)
         this.$emit('update:fileList', fileListCopy)
         this.$emit('uploaded')
       },
@@ -107,14 +104,11 @@
           let formData = new FormData()
           formData.append(this.name, rawFile)
           this.doUploadFiles(formData, (response) => {
-            console.log('23123123123', this.parseResponse)
             let url = this.parseResponse(response)
-            console.log(url, newName)
             this.url = url
             this.afterUploadFiles(newName, url)
             
           }, (xhr) => {
-            console.log('eroor', xhr)
             this.uploadError(xhr, newName)
           })
         }
@@ -144,7 +138,6 @@
         return name
       },
       doUploadFiles (formData, success, fail) {
-        console.log(11)
         http[this.method.toLowerCase()](this.action, {success, fail, data: formData})
       },
       createInput () {

@@ -32,17 +32,11 @@
         window.alert(error || '上传失败')
       },
       parseResponse (response) {
-        console.log(11212121, response)
-        // let object = JSON.parse(response)
         let url = `http://127.0.0.1:3000/preview/${response}`
-        console.log('url', url)
-
         return url
       },      
       y(newFileList){
-        console.log('newFileList', newFileList)
         this.fileList = newFileList
-        console.log('fileList', this.fileList)
       }
     },
   };
