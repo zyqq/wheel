@@ -1,82 +1,48 @@
 <template>
-  <div>
-    {{selected}}
-    <div style="margin: 20px;">
-      <w-table :columns="columns" :data-source="dataSource" bordered :selected-items.sync="selected"
-        :order-by.sync="orderBy" @update:orderBy="x" :loading="loading" :height="400" expend-field="description" checkable>
-        <template slot-scope="scope">
-          <button @click="edit(scope.item)">编辑</button>
-          <button @click="view(scope.item)">查看</button>
-        </template>
-      </w-table>
-    </div>
-    <div style="margin: 20px;">
-      <w-table :columns="columns" :data-source="dataSource" bordered compact :striped="false"></w-table>
-    </div>
-    <div style="margin: 20px;">
-      <w-pager :total-page="10" :current-page.sync="currentPage"></w-pager>
-    </div>
+  <div style="margin: 20px;">
+    {{error}}
+    <br>
+    {{fileList}}
+    <div>只能上传 300kb 以内的 png、jpeg 文件</div>
+    <w-uploader accept="image/*" method="POST" action="http://127.0.0.1:3000/upload" name="file"
+      @update:fileList="y" :parseResponse="parseResponse" 
+      :file-list.sync="fileList"  @error="error=$event" :size-limit="1024*1024">
+      <w-button icon="upload">上传</w-button>
+    </w-uploader>
   </div>
 </template>
 <script>
-  import WPager from './pager/pager'
-  import WTable from './table/table'
+  import WUploader from './uploader/uploader'
+  import WButton from './button/button'
 
   export default {
     name: "demo",
     components: {
-      WPager,
-      WTable
+      WUploader,
+      WButton
     },
     data() {
       return {
-        currentPage: 1,
-        selected: [],
-        loading: false,
-        orderBy: { // true 表示开启排序，但是不确定asc、desc，不传则关闭
-          score: 'desc'
-        },
-        columns: [
-          {text: '姓名', field: 'name', width: 100},
-          {text: '分数', field: 'score'},
-        ],
-        dataSource: [
-          {id: 1, name: '方方', score: 100, description: 'xxxx'},
-          {id: 2, name: '圆圆', score: 99, description: 'yyyy'},
-          {id: 3, name: '张三', score: 100},
-          {id: 4, name: '李四', score: 99},
-          {id: 5, name: '超人', score: 100},
-          {id: 6, name: '蝙蝠侠', score: 99},
-          {id: 7, name: '蜘蛛侠', score: 100},
-          {id: 8, name: '钢铁侠', score: 99},
-          {id: 9, name: '方方', score: 100},
-          {id: 10, name: '圆圆', score: 99},
-          {id: 11, name: '张三', score: 100},
-          {id: 12, name: '李四', score: 99},
-          {id: 13, name: '超人', score: 100},
-          {id: 14, name: '蝙蝠侠', score: 99},
-          {id: 15, name: '蜘蛛侠', score: 100},
-          {id: 16, name: '钢铁侠', score: 99},
-          {id: 17, name: '蜘蛛侠', score: 100},
-          {id: 18, name: '钢铁侠', score: 99},
-          {id: 19, name: '方方', score: 100},
-          {id: 20, name: '圆圆', score: 99}
-        ]
+        fileList: [],
+        error: ''
       }
     },
     methods: {
-      edit(item){
-        alert(`开始编辑${item.id}`)
+      alert (error) {
+        window.alert(error || '上传失败')
       },
-      view(item){
-        alert(`开始查看${item.id}`)
-      },
-      x() {
-        this.loading = true
-        setTimeout(() => {
-          this.dataSource = this.dataSource.sort((a, b) => a.score - b.score)
-          this.loading = false
-        }, 3000);
+      parseResponse (response) {
+        console.log(11212121, response)
+        // let object = JSON.parse(response)
+        let url = `http://127.0.0.1:3000/preview/${response}`
+        console.log('url', url)
+
+        return url
+      },      
+      y(newFileList){
+        console.log('newFileList', newFileList)
+        this.fileList = newFileList
+        console.log('fileList', this.fileList)
       }
     },
   };
