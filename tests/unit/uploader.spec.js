@@ -13,6 +13,7 @@ describe('Uploader.vue', () => {
     expect(Uploader).to.exist
   })
   it('可以上传一个文件', (done) => {
+    // 造假ajax的post方法响应
     let stub = sinon.stub(http, 'post').callsFake((url, options) => {
       setTimeout(function () {
         options.success('{"id": "123123"}')
@@ -36,6 +37,7 @@ describe('Uploader.vue', () => {
         'uploaded': () => {
           expect(wrapper.find('use').exists()).to.eq(false)
           expect(wrapper.props().fileList[0].url).to.eq('/preview/123123')
+          // 恢复为原来的ajax的post函数
           stub.restore()
           done()
         }
@@ -48,11 +50,9 @@ describe('Uploader.vue', () => {
     const data = new DataTransfer()
     data.items.add(file1)
     input.files = data.files
-    // 用变量转存会变成undefined
-    // let use = wrapper.find('use').element
     // 改变input值不会触发change，需要手动触发
     inputWrapper.trigger('change')
-    expect(wrapper.find('use').element.getAttribute('xlink:href')).to.eq('#i-loading')
-   
+    let use = wrapper.find('use').element
+    expect(use.getAttribute('xlink:href')).to.eq('#i-loading')
   })
 })
