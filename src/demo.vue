@@ -1,7 +1,11 @@
 <template>
   <div style="display:flex;justify-content: center;">
     <div style="width:500px;border:1px solid black;">
-      <w-sticky distance="100">
+      <p>段落1</p>
+      <p>段落2</p>
+      <p>段落3</p>
+      <p>段落4</p>
+      <w-sticky :distance="10">
         <div style="border:1px solid red;">粘滞内容</div>
       </w-sticky>
       <p>段落1</p>
