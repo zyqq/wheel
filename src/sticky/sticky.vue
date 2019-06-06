@@ -26,7 +26,19 @@ export default {
   mounted() {
     // top 多次获取会改变，因此只能获取一次
     let top = this.top()
-    window.addEventListener('scroll', () => {
+    this.windowScrollHandler = this._windowScrollHandler.bind(this)
+    window.addEventListener('scroll', this.windowScrollHandler)
+  },
+  beforeDestroy(){
+    window.removeEventListener('scroll', this.windowScrollHandler)
+  },
+  methods: {
+    top() {
+      let { top } = this.$refs.wrapper.getBoundingClientRect()
+      let t = window.scrollY
+      return t + top
+    },
+    _windowScrollHandler(){
       if(window.scrollY > top) {
         console.log('滚动过了')
         let { height, width, left } = this.$refs.wrapper.getBoundingClientRect()
@@ -41,13 +53,6 @@ export default {
         this.sticky = false
         console.log('没滚过')
       }
-    })
-  },
-  methods: {
-    top() {
-      let { top } = this.$refs.wrapper.getBoundingClientRect()
-      let t = window.scrollY
-      return t + top
     }
   }
 }
