@@ -3,7 +3,7 @@
   "version": "0.0.4",
   "description": "一个用 Vue 写的 UI 框架",
   "private": false,
-  "main":"dist/echo-wheel.umd.min.js",
+  "main": "dist/echo-wheel.umd.min.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zyqq/wheel.git"
@@ -24,7 +24,7 @@
     "docs:build": "vuepress build docs",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name echo-wheel src/index.js",
-    "test": "karma start --single-run",
+    "test": "cross-env BABEL_ENV=test karma start --single-run",
     "test:unit": "karma start",
     "test:unit:old": "vue-cli-service test:unit"
   },
@@ -41,12 +41,15 @@
     "@vue/cli-service": "^3.0.0",
     "@vue/component-compiler-utils": "^2.6.0",
     "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-plugin-istanbul": "^5.1.4",
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
+    "cross-env": "^5.2.0",
     "karma": "^3.0.0",
     "karma-chai": "^0.1.0",
     "karma-chai-spies": "^0.1.4",
     "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage": "^1.1.2",
     "karma-mocha": "^1.3.0",
     "karma-sinon-chai": "^2.0.2",
     "karma-sourcemap-loader": "^0.3.7",
