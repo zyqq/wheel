@@ -65,7 +65,7 @@
 
     ```js
     import { Button } from 'echo-wheel'
-    import 'echo-wheel/dist/index.css'
+    import 'echo-wheel/dist/echo-wheel.css'
 
     export defult {
       components: {
