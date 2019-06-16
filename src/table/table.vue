@@ -21,7 +21,7 @@
         </tr>
         </thead>
         <tbody>
-          <template v-for="item,index in dataSource">
+          <template v-for="(item,index) in dataSource">
             <tr :key="item.id">
               <td v-if="expendField" :style="{width: '50px'}" class="wheel-table-center">
                 <w-icon class="wheel-table-expendIcon" name="right" :class="{expended: expendedIds.indexOf(item.id) >= 0}"
@@ -33,7 +33,15 @@
                 /></td>
               <td :style="{width: '50px'}" v-if="numberVisible">{{index+1}}</td>
               <template v-for="column in columns">
-                <td :style="{width: column.width + 'px'}" :key="column.field">{{item[column.field]}}</td>
+                <!-- <td :style="{width: column.width + 'px'}" :key="column.field">{{item[column.field]}}</td> -->
+                <td :style="{width: column.width + 'px'}" :key="column.field">
+                  <template v-if="column.render">
+                    <vnodes :vnodes="column.render({value: item[column.field]})"></vnodes>
+                  </template>
+                  <template v-else>
+                    {{ item[column.field] }}
+                  </template>
+                </td>
               </template>
               <td v-if="$scopedSlots.default">
                 <div ref="actions" style="display: inline-block;">
@@ -61,7 +69,13 @@
 
   export default {
     name: "WheelTable",
-    components: {WIcon},
+    components: {
+      WIcon,
+      vnodes: {
+        functional: true,
+        render: (h, context) => context.props.vnodes
+      }
+    },
     props: {
       height: {
         type: Number
@@ -89,10 +103,6 @@
         type: Boolean,
         default: false
       },
-      columns: {
-        type: Array,
-        required: true
-      },
       dataSource: {
         type: Array,
         required: true,
@@ -115,7 +125,8 @@
     },
     data() {
       return {
-        expendedIds: []
+        expendedIds: [],
+        columns: []
       }
     },
     computed: {
@@ -149,6 +160,13 @@
       }
     },
     mounted() {
+      // 自己构造column，以提供传入标签的功能
+      this.columns = this.$slots.default.map(node => {
+        let { text, field, width } = node.componentOptions.propsData
+        let render = node.data.scopedSlots && node.data.scopedSlots.default
+        return { text, field, width, render }
+      })
+
       // 将table复制一份，并去掉tbody，复制原来的thead
       let table2 = this.$refs.table.cloneNode(false)
       this.table2 = table2

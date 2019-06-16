@@ -25,7 +25,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name echo-wheel src/index.js",
     "test": "cross-env BABEL_ENV=test karma start --single-run",
-    "test:unit": "karma start",
+    "test:unit": "cross-env BABEL_ENV=test karma start",
     "test:unit:old": "vue-cli-service test:unit"
   },
   "dependencies": {
