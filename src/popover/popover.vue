@@ -4,7 +4,7 @@
       ref="contentWrapper"
       class="wheel-popover-content-wrapper"
       v-if="visible"
-      :class="{[`position-${position}`]:true}"
+      :class="[{[`position-${position}`]:true}, popClassName]"
     >
       <slot name="content" :close="close"></slot>
     </div>
@@ -20,13 +20,19 @@ export default {
   data() {
     return { visible: false }
   },
-  props: {
+  props: {      
+    popClassName: {
+        type: String
+    },
     position: {
       type: String,
       default: 'top',
       validator(value) {
         return ['top', 'bottom', 'left', 'right'].indexOf(value) >= 0
       }
+    },     
+    container: {
+      type: Element
     },
     trigger: {
       type: String,
@@ -66,8 +72,8 @@ export default {
       popover.appendChild(contentWrapper)
     },
     positionContent() {
-      const { contentWrapper, triggerWrapper } = this.$refs
-      document.body.appendChild(contentWrapper)
+      const { contentWrapper, triggerWrapper } = this.$refs;
+      (this.container || document.body).appendChild(contentWrapper)
       let { width, height, top, left } = triggerWrapper.getBoundingClientRect()
       let { height: height2 } = contentWrapper.getBoundingClientRect()
       let positions = {

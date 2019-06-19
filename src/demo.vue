@@ -1,30 +1,16 @@
 <template>
-  <div>
-    {{selected}}
-    <div style="margin: 20px;">
-      <w-table :data-source="dataSource" bordered :selected-items.sync="selected" :order-by.sync="orderBy"
-        @update:orderBy="x" :loading="loading" :height="400" expend-field="description" checkable>
-        <w-table-column text="姓名" field="name" :width="100">
-          <template slot-scope="props">
-            <a :href="`/users/${props.value}`">{{props.value}}</a>
-          </template>
-        </w-table-column>
-        <w-table-column text="分数" field="score"></w-table-column>
-      </w-table>
-    </div>
+  <div class="page" style="position:relative;">
+    <w-date-picker></w-date-picker>
+    <p>其他内容</p>
   </div>
 </template>
 <script>
-  import WPager from './pager/pager'
-  import WTable from './table/table'
-  import WTableColumn from './table/table-column'
+  import WDatePicker from './date-picker/date-picker'
 
   export default {
     name: "demo",
     components: {
-      WPager,
-      WTable,
-      WTableColumn
+      WDatePicker
     },
     data () {
       return {
@@ -82,4 +68,7 @@
 <style lang="scss" scoped>
   * {margin: 0; padding: 0; box-sizing: border-box;}
   body {background:white;}
+  .page {
+    padding: 100px;
+  }
 </style> 
