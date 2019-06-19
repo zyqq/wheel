@@ -1,51 +1,23 @@
 <template>
   <div class="page" style="position:relative;">
-    <w-date-picker></w-date-picker>
+    <w-date-range-picker :value="d" @input="d = $event" :scope="scope"></w-date-range-picker>    
     <p>其他内容</p>
   </div>
 </template>
 <script>
   import WDatePicker from './date-picker/date-picker'
+  import WDateRangePicker from './date-picker/date-range-picker'
 
   export default {
     name: "demo",
     components: {
-      WDatePicker
+      WDatePicker,
+      WDateRangePicker
     },
     data () {
       return {
-        currentPage: 1,
-        selected: [],
-        // columns: [
-        //   {text: '姓名', field: 'name', width: 100}, // 1
-        //   {text: '分数', field: 'score'},
-        // ],
-        orderBy: { // true - 开启排序，但是不确定asc desc
-          score: 'desc'
-        },
-        loading: false,
-        dataSource: [
-          {id: 1, name: '方方', score: 100, description: 'xxxx xxxx'},
-          {id: 2, name: '圆圆', score: 99, description: 'yyyy yyyy'},
-          {id: 3, name: '张三', score: 100},
-          {id: 4, name: '李四', score: 99},
-          {id: 5, name: '超人', score: 100},
-          {id: 6, name: '蝙蝠侠', score: 99},
-          {id: 7, name: '蜘蛛侠', score: 100},
-          {id: 8, name: '钢铁侠', score: 99},
-          {id: 9, name: '方方', score: 100},
-          {id: 10, name: '圆圆', score: 99},
-          {id: 11, name: '张三', score: 100},
-          {id: 12, name: '李四', score: 99},
-          {id: 13, name: '超人', score: 100},
-          {id: 14, name: '蝙蝠侠', score: 99},
-          {id: 15, name: '蜘蛛侠', score: 100},
-          {id: 16, name: '钢铁侠', score: 99},
-          {id: 17, name: '蜘蛛侠', score: 100},
-          {id: 18, name: '钢铁侠', score: 99},
-          {id: 19, name: '方方', score: 100},
-          {id: 20, name: '圆圆', score: 99},
-        ]
+        d: [],
+        scope: [new Date(1958, 1), new Date(2118, 5)]
       }
     },
     methods: {

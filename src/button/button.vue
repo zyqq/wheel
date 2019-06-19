@@ -1,8 +1,8 @@
 <template>
-  <button class="w-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
+  <button class="wheel-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
     <w-icon class="icon" v-if="icon && !loading" :name="icon" ></w-icon>
     <w-icon class="loading icon" v-if="loading" name="loading"></w-icon>
-    <div class="button-content">
+    <div class="wheel-button-content">
       <slot />
     </div>
   </button>  
@@ -35,7 +35,7 @@ export default {
 <style lang="scss" scoped>
   @import '../../styles/_var.scss';
 
-  .w-button {
+  .wheel-button {
     height: $button-height;
     padding: 0 1em;
     font-size: $font-size;
@@ -61,8 +61,8 @@ export default {
       order: 1;
       margin-right: .1em;
     }
-    > .button-content {
-      order: 2;
+    > .wheel-button-content {
+      order: 1;
     }
     &.icon-right {
       > .icon {
@@ -76,6 +76,9 @@ export default {
     }
     .loading {
       @include spin
+    }
+    & + & {
+      margin-left: 4px;
     }
   }
 

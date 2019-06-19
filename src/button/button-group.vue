@@ -1,5 +1,5 @@
 <template>
-  <div class="w-button-group">
+  <div class="wheel-button-group">
     <slot></slot>
   </div>
 </template>
@@ -10,7 +10,7 @@ export default {
     for(let node of this.$el.children) {
       let name = node.nodeName.toLowerCase()
       if (name === 'div') {
-        console.warn(`w-button-group 的子元素必须是 w-button-group ，而你用的是 ${name}`)
+        console.warn(`wheel-button-group 的子元素必须是 wheel-button-group ，而你用的是 ${name}`)
       }
     }
   }
@@ -20,10 +20,10 @@ export default {
 
 <style lang="scss" scoped>
   @import '../../styles/_var.scss';
-  .w-button-group {
+  .wheel-button-group {
     display: inline-flex;
     vertical-align: middle;
-    > .w-button {
+    > .wheel-button {
       border-radius: 0;
       &:not(:first-child) {
         margin-left: -1px;
