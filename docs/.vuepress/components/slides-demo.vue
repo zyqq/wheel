@@ -1,38 +1,50 @@
 <template>
-  <div style="padding-top: 16px;">
-    <h2>简单用法</h2>
+  <div class="demo">
+    <h2>📌 简单用法</h2>
     <p>
       <strong>预览</strong>
     </p>
-    <w-slides :selected.sync="selected">
-      <w-slides-item name="1">
-        <div class="box">1</div>
-      </w-slides-item>
-      <w-slides-item name="2">
-        <div class="box">2</div>
-      </w-slides-item>
-      <w-slides-item name="3">
-        <div class="box">3</div>
-      </w-slides-item>
-    </w-slides>
-
-    <p>
-      <strong>代码</strong>
-    </p>
-    <pre><code>{{content}}</code></pre>
+    <div class="component-wrapper">
+      <div class="component-wrapper-demo">
+        <w-slides :selected.sync="selected">
+          <w-slides-item name="1">
+            <div class="box">1</div>
+          </w-slides-item>
+          <w-slides-item name="2">
+            <div class="box">2</div>
+          </w-slides-item>
+          <w-slides-item name="3">
+            <div class="box">3</div>
+          </w-slides-item>
+        </w-slides>
+      </div>
+      <div class="code-content" v-highlight style="height: 0;">
+        <div class="code-content-height">
+          <pre><code class="html">{{codeStr}}</code></pre>
+        </div>
+      </div>
+      <div class="lock-code" @click="showCode(0)" ref="xxx">
+        <w-icon class="icon-down" :name="isShow[0] === false ? 'down' : 'up'"></w-icon>
+        <span class="lock-code-word">{{isShow[0] === false ? '显示代码' : '隐藏代码'}}</span>
+      </div>
+    </div>
   </div>
 </template>
 <script>
   import WSlides from '../../../src/slides/slides'
   import WSlidesItem from '../../../src/slides/slides-item'
+  import WIcon from '../../../src/icon/icon'
+  import mixin from '../mixin'
+
   export default {
     components: {
-      WSlides, WSlidesItem
+      WSlides, WSlidesItem, WIcon
     },
+    mixins: [mixin],
     data () {
       return {
         selected: "1",
-        content: `
+        codeStr: `
           <w-slides :selected.sync="selected">
             <w-slides-item name="1">
               <div class="box">1</div>

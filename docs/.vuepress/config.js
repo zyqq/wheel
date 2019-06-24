@@ -4,7 +4,7 @@ module.exports = {
   title: '🚲 EchoWheel UI',
   description: '一套为开发者学习准备的基于 Vue 2.0 的移动端和 PC 端组件库',
   head: [
-    ['link', { rel: 'shortcut icon', href: '../../img/logo.ico' }]
+    ['link', { rel: 'icon', href: '/img/wheel.png', type: 'image/png' }]
   ],
   themeConfig: {
     repo: 'zyqq/wheel',// 默认是 false, 设置为 true 来启用
@@ -15,6 +15,7 @@ module.exports = {
       {text: '文档', link: '/guide/'},
       {text: '交流', link: 'https://github.com/zyqq/wheel/issues'},
     ],
+    sidebarDepth: 2,
     sidebar: [
       {
         title: '入门',
@@ -28,6 +29,7 @@ module.exports = {
         title: '组件',
         collapsable: false,
         children: [
+          '/components/icon',
           '/components/button',
           '/components/tabs',
           '/components/input',
@@ -39,7 +41,6 @@ module.exports = {
           '/components/slides'
         ]
       },
-
     ]
   },
   scss:{

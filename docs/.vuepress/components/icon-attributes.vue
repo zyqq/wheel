@@ -1,7 +1,12 @@
 <template>
   <div class="base">
     <section>
-      <h2>📌 w-row Attributes</h2>
+      <h2>📌 Attributes</h2>
+      <p class="des">
+        组件将被渲染为
+        <span class="code">button</span>标签，因此你可以使用所有的
+        <span class="code">button</span>原生属性。
+      </p>
       <div class="attr">
         <table>
           <thead>
@@ -15,9 +20,9 @@
           </thead>
           <tbody>
             <tr>
-              <td>gutter</td>
-              <td class="des">栅格的间隙，单位为 px</td>
-              <td class="type">String , Number</td>
+              <td>name</td>
+              <td class="des">icon 图标名</td>
+              <td class="type">String</td>
               <td>——</td>
               <td>——</td>
             </tr>

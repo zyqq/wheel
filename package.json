@@ -45,6 +45,7 @@
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
     "cross-env": "^5.2.0",
+    "highlight.js": "^9.15.8",
     "karma": "^3.0.0",
     "karma-chai": "^0.1.0",
     "karma-chai-spies": "^0.1.4",
