@@ -10,7 +10,7 @@ EchoWheel UI 是一个不太一样的 UI 框架。
 
 每个分支名称代表完成组件名，目前提交顺序是
 
-> `button-and-input` -> `row-and-col` -> `grid-and-layout` -> `toast` -> `tabs` -> `popover` -> `collapse`
+> `button-and-input` -> `row-and-col` -> `grid-and-layout` -> `toast` -> `tabs` -> `popover` -> `collapse` -> `cascader` -> `slides` -> `nav` -> `validate` -> `page` -> `table` -> `uploader` -> `sticky` -> `date-picker` -> `scroll`
 
 可按照此顺序查看分支以获得具体组件完成时的提交记录，按此学习编写组件的源代码。
 
@@ -20,7 +20,7 @@ EchoWheel UI 是一个不太一样的 UI 框架。
 
 本 UI 框架是基于 Vue 2 实现的。
 
-注意：本 UI 框架的代码尚未完全完工（目前代码大概完成 30%），请不要在生产环境中使用本 UI 框架。
+注意：本 UI 框架的代码尚已完工，但是主要目的在于供学习参考，因此不保证代码健全性，请不要在生产环境中使用本 UI 框架。
 
 ## 🔥 你能学到什么
 
@@ -30,11 +30,9 @@ EchoWheel UI 是一个不太一样的 UI 框架。
 
 ## 🍳 有哪些轮子
 
-* 简单轮子：按钮、输入框、网格、布局、Toast、Tabs、Popover、手风琴（代码已完成）
-* 进阶轮子：级联选择、无缝轮播、响应式导航条、分页、表单验证、Table、图片上传、Sticky、Tree、Suggestion、Datepicker（代码未完成）
-* 其他：路由、状态管理（代码未完成）
-
-注意：这只是目前的计划，具体要完成的轮子可能与上面有出入。
+* 简单轮子：按钮（Button）、输入框（Input）、网格（Grid）、布局(Layout)、提示（Toast）、标签页（Tabs）、弹出层（Popover）、折叠面板（Collapse）
+* 进阶轮子：级联选择（Cascader）、无缝轮播（Slides）、响应式导航条（Nav）、分页(Pager)、表单验证（Validate）、图片上传（Uploader）、粘滞组件（Sticky）
+* 高级轮子：滚动条（Scroll）、日期选择器（DatePicker）、表格（Table）
 
 ## 📌 项目特点
 

@@ -1,6 +1,6 @@
 {
   "name": "echo-wheel",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "一个用 Vue 写的 UI 框架",
   "private": false,
   "main": "dist/echo-wheel.umd.min.js",
