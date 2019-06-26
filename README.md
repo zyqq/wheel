@@ -88,8 +88,7 @@
 
 - 简单轮子：按钮、输入框、网格、布局、Toast、Tabs、Popover、手风琴（代码已完成）
 - 进阶轮子：级联选择、无缝轮播、响应式导航条、分页、表单验证、Table、图片上传、Sticky（代码已完成）
-- 高级轮子：Tree、Suggestion、Datepicker（代码未完成）
-- 其他：路由、状态管理（代码未完成）
+- 高级轮子：Tree、Suggestion、Datepicker（代码已完成）
 
 详情变更记录在 [releases](https://github.com/zyqq/wheel/releases).
 

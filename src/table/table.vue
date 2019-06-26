@@ -17,10 +17,10 @@
               </span>
             </div>
           </th>
-          <th ref="actionsHeader" v-if="$scopedSlots.default"></th>
+          <!-- <th ref="actionsHeader" v-if="$scopedSlots.default"></th> -->
         </tr>
         </thead>
-        <tbody>
+        <tbody ref="tbody">
           <template v-for="(item,index) in dataSource">
             <tr :key="item.id">
               <td v-if="expendField" :style="{width: '50px'}" class="wheel-table-center">
@@ -43,11 +43,11 @@
                   </template>
                 </td>
               </template>
-              <td v-if="$scopedSlots.default">
+              <!-- <td v-if="$scopedSlots.default">
                 <div ref="actions" style="display: inline-block;">
                   <slot :item="item"></slot>
                 </div>
-              </td>
+              </td> -->
             </tr>
             <tr v-if="inExpendedIds(item.id)" :key="`${item.id}-expend`">
               <td :colspan="columns.length + expendedCellColSpan">
@@ -66,7 +66,6 @@
 
 <script>
   import WIcon from '../icon/icon'
-import { constants } from 'crypto';
 
   export default {
     name: "WheelTable",
@@ -94,7 +93,7 @@ import { constants } from 'crypto';
       },
       striped: {
         type: Boolean,
-        default: true
+        default: false
       },
       selectedItems: {
         type: Array,
@@ -162,13 +161,12 @@ import { constants } from 'crypto';
     },
     mounted() {
       // 自己构造column，以提供传入标签的功能
-      console.log(this.$slots)
+      this.$slots.default = this.$slots.default.filter(node => node.tag)
       this.columns = this.$slots.default.map(node => {
         let { text, field, width } = node.componentOptions.propsData
         let render = node.data.scopedSlots && node.data.scopedSlots.default
         return { text, field, width, render }
       })
-
       // 将table复制一份，并去掉tbody，复制原来的thead
       let table2 = this.$refs.table.cloneNode(false)
       this.table2 = table2
@@ -181,21 +179,21 @@ import { constants } from 'crypto';
       this.$refs.wrapper.appendChild(table2)
 
       // 手动获取操作按钮的td宽度，给操作列加上此宽度，实现列对齐
-      if (this.$scopedSlots.default) {
-        let div = this.$refs.actions[0]
-        let {width} = div.getBoundingClientRect()
-        let parent = div.parentNode
-        let styles = getComputedStyle(parent)
-        let paddingLeft = styles.getPropertyValue('padding-left')
-        let paddingRight = styles.getPropertyValue('padding-right')
-        let borderLeft = styles.getPropertyValue('border-left-width')
-        let borderRight = styles.getPropertyValue('border-right-width')
-        let width2 = width + parseInt(paddingRight) + parseInt(paddingRight) + parseInt(borderLeft) + parseInt(borderRight) + 'px'
-        this.$refs.actionsHeader.style.width = parseInt(width2) + this.getScrollWidth() + 'px'
-        this.$refs.actions.map(div => {
-          div.parentNode.style.width = width2
-        })
-      }
+      // if (this.$scopedSlots.default) {
+      //   let div = this.$refs.actions[0]
+      //   let {width} = div.getBoundingClientRect()
+      //   let parent = div.parentNode
+      //   let styles = getComputedStyle(parent)
+      //   let paddingLeft = styles.getPropertyValue('padding-left')
+      //   let paddingRight = styles.getPropertyValue('padding-right')
+      //   let borderLeft = styles.getPropertyValue('border-left-width')
+      //   let borderRight = styles.getPropertyValue('border-right-width')
+      //   let width2 = width + parseInt(paddingRight) + parseInt(paddingRight) + parseInt(borderLeft) + parseInt(borderRight) + 'px'
+      //   this.$refs.actionsHeader.style.width = parseInt(width2) + this.getScrollWidth() + 'px'
+      //   this.$refs.actions.map(div => {
+      //     div.parentNode.style.width = width2
+      //   })
+      // }
     },
     beforeDestroy() {
       this.table2.remove()
@@ -261,12 +259,15 @@ import { constants } from 'crypto';
     width: 100%;
     border-collapse: collapse;
     border-spacing: 0;
-    border-bottom: 1px solid $grey;
+    // border-bottom: 1px solid $grey;
     &.bordered {
-      border: 1px solid $grey;
+      // border: 1px solid $grey;
       td, th {
         border: 1px solid $grey;
       }
+    }
+    tr {
+      background-color: transparent;
     }
     &.compact {
       td, th {
@@ -319,6 +320,7 @@ import { constants } from 'crypto';
     &-wrapper {
       position: relative;
       overflow: auto;
+      overflow-x: hidden;
     }
     &-loading {
       background: rgba(255, 255, 255, 0.8);

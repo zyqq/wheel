@@ -1,7 +1,7 @@
 <template>
   <div class="base">
     <section>
-      <h2>📌 Attributes</h2>
+      <h2>📌 w-table Attributes</h2>
       <div class="attr">
         <table>
           <thead>
@@ -15,11 +15,60 @@
           </thead>
           <tbody>
             <tr>
-              <td>distance</td>
-              <td class="des">粘滞位置距离窗口顶部的距离，单位 px，默认0</td>
+              <td>height</td>
+              <td class="des">表格高度</td>
               <td class="type">Number</td>
               <td>——</td>
-              <td>0</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>expendField</td>
+              <td class="des">展开内容描述文字</td>
+              <td class="type">String</td>
+              <td>——</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>orderBy</td>
+              <td class="des">是一个对象，key 值表示排序字段，value 表示升（asc）降（desc），值也可设为 true 表示开启排序</td>
+              <td class="type">Object</td>
+              <td>——</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>loading</td>
+              <td class="des">加载图标</td>
+              <td class="type">Boolean</td>
+              <td>——</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>striped</td>
+              <td class="des">斑马条纹</td>
+              <td class="type">Boolean</td>
+              <td>——</td>
+              <td>false</td>
+            </tr>
+            <tr>
+              <td>selectedItems</td>
+              <td class="des">选择项</td>
+              <td class="type">Array</td>
+              <td>——</td>
+              <td>[]</td>
+            </tr>
+            <tr>
+              <td>dataSource</td>
+              <td class="des">必填，表格内容信息</td>
+              <td class="type">Array</td>
+              <td>——</td>
+              <td>--</td>
+            </tr>
+            <tr>
+              <td>checkable</td>
+              <td class="des">可选择</td>
+              <td class="type">Boolean</td>
+              <td>——</td>
+              <td>false</td>
             </tr>
           </tbody>
         </table>
