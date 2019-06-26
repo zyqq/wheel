@@ -1,5 +1,5 @@
 <template>
-  <div class="wheel-date-picker" style="border: 1px solid red;" ref="wrapper">
+  <div class="wheel-date-picker" ref="wrapper">
     <w-popover ref="popover" position="bottom" :container="popoverContainer" @open="onOpen">
       <w-input type="text" :value="formattedValue" @input="onInput" @change="onChange" ref="input"/>
       <template slot="content">

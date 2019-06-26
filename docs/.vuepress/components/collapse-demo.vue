@@ -21,7 +21,7 @@
         <w-icon class="icon-down" :name="isShow[0] === false ? 'down' : 'up'"></w-icon>
         <span class="lock-code-word">{{isShow[0] === false ? '显示代码' : '隐藏代码'}}</span>
       </div>
-
+    </div>
     <h2>📌 手风琴效果</h2>
     <p>
       <strong>预览</strong>
@@ -43,7 +43,6 @@
         <w-icon class="icon-down" :name="isShow[1] === false ? 'down' : 'up'"></w-icon>
         <span class="lock-code-word">{{isShow[1] === false ? '显示代码' : '隐藏代码'}}</span>
       </div>
-    </div>
     </div>
   </div>
 </template>

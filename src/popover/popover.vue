@@ -149,6 +149,7 @@ export default {
     background: white;
     padding: .5em 1em;
     word-break: break-all;
+    z-index: 1;
     &::before, &::after {
       content: '';
       display: block;

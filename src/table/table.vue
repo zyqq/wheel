@@ -66,6 +66,7 @@
 
 <script>
   import WIcon from '../icon/icon'
+import { constants } from 'crypto';
 
   export default {
     name: "WheelTable",
@@ -161,6 +162,7 @@
     },
     mounted() {
       // 自己构造column，以提供传入标签的功能
+      console.log(this.$slots)
       this.columns = this.$slots.default.map(node => {
         let { text, field, width } = node.componentOptions.propsData
         let render = node.data.scopedSlots && node.data.scopedSlots.default

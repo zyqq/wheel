@@ -12,7 +12,7 @@ module.exports = {
     // editLinks: true,
     nav: [
       {text: '主页', link: '/'},
-      {text: '文档', link: '/guide/'},
+      {text: '指南', link: '/guide/'},
       {text: '交流', link: 'https://github.com/zyqq/wheel/issues'},
     ],
     sidebarDepth: 2,
@@ -38,7 +38,16 @@ module.exports = {
           '/components/toast',
           '/components/popover',
           '/components/collapse',
-          '/components/slides'
+          '/components/slides',
+          '/components/cascader',
+          '/components/date-picker',
+          '/components/sticky',
+          '/components/pager',
+          '/components/nav',
+          '/components/uploader',
+          '/components/validate',
+          '/components/scroll',
+          '/components/table',
         ]
       },
     ]

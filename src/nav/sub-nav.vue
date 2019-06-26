@@ -117,6 +117,7 @@ export default {
       font-size: $font-size;
       color: $light-color;
       min-width: 8em;
+      z-index: 1;
       &.vertical {
         position: static;
         border-radius: 0;

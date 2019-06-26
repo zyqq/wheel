@@ -37,7 +37,8 @@
       method: {type: String, default: 'POST'},
       parseResponse: {type: Function, required: true},
       fileList: {type: Array, default: () => []},
-      sizeLimit: {type: Number}
+      sizeLimit: {type: Number},
+      accept: {type: String, default: 'image/*'}
     },
     data () {
       return {
@@ -54,7 +55,7 @@
         input.click()
       },
       onRemoveFile (file) {
-        let answer = window.confirm('你确定要删除这玩意吗')
+        let answer = window.confirm('确定删除？')
         if (answer) {
           let copy = [...this.fileList]
           let index = copy.indexOf(file)
@@ -143,7 +144,7 @@
       createInput () {
         this.$refs.temp.innerHTML = ''
         let input = document.createElement('input')
-        input.accept = "image/png"
+        input.accept = this.accept
         input.type = 'file'
         input.multiple = true
         this.$refs.temp.appendChild(input)

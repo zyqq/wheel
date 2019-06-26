@@ -128,6 +128,7 @@ export default {
     margin-top: 8px;
     @extend .box-shadow;
     background: white;
+    z-index: 1;
   }
 }
 </style>
