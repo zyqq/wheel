@@ -57,7 +57,7 @@
     "karma-spec-reporter": "^0.0.32",
     "karma-webpack": "^3.0.0",
     "mocha": "^6.0.2",
-    "node-sass": "^4.9.0",
+    "node-sass": "^7.0.0",
     "parcel-bundler": "^1.12.3",
     "sass": "^1.17.3",
     "sass-loader": "^7.0.1",
